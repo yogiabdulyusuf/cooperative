@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
+        <!-- SAVING TYPE -->
         <record id="savings_type_form" model="ir.ui.view">
            <field name="name">Savings Type Form</field>
            <field name="model">savings.type</field>
@@ -29,6 +29,41 @@
         <record id="act_savings_type" model="ir.actions.act_window">
             <field name="name">Savings Type</field>
             <field name="res_model">savings.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- END SAVING TYPE -->
+
+        <!-- SAVING INTEREST -->
+        <record id="interest_form_view" model="ir.ui.view">
+            <field name="name">Savings Interest Form</field>
+            <field name="model">savings.interest</field>
+            <field name="arch" type="xml">
+                <form string="interest_form">
+                    <sheet>
+                        <group>
+                            <field name="type_interest"/>
+                            <field name="value_interest"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="interest_tree_view" model="ir.ui.view">
+            <field name="name">Savings Interest Tree</field>
+            <field name="model">savings.interest</field>
+            <field name="arch" type="xml">
+                <tree string="interest_tree">
+                    <field name="type_interest"/>
+                    <field name="value_interest"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="act_savings_interest" model="ir.actions.act_window">
+            <field name="name">Savings Interest</field>
+            <field name="res_model">savings.interest</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
