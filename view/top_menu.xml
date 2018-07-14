@@ -4,12 +4,13 @@
 
 	<!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
 	<menuitem id="membership_menu_group" parent="cooperative_menu_root" name="Membership" />
-	<menuitem	id="menu_membership"	name="Membership" parent="membership_menu_group"	action="act_membership" sequence="3"/>
+		<menuitem	id="menu_membership"	name="Membership" parent="membership_menu_group"	action="act_membership" sequence="3"/>
 
 	<!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
 	<menuitem id="savings_menu_group" parent="cooperative_menu_root" name="Savings" />
-	<menuitem	id="type_savings"	name="Savings Type" parent="savings_menu_group"	action="act_savings_type" sequence="5"/>
-	<menuitem	id="type_savings_interest"	name="Type of Savings Interest" parent="savings_menu_group"	action="act_savings_interest" sequence="6"/>
-	<!--<menuitem	id="type_savings_transaction"	name="Type of Savings Transaction" parent="savings_menu_group"	action="act_savings_type" sequence="7"/>-->
+		<menuitem	id="type_savings"	name="Savings Type" parent="savings_menu_group"	action="act_savings_type" sequence="5"/>
+		<menuitem	id="type_savings_interest"	name="Type of Savings Interest" parent="savings_menu_group"	action="act_savings_interest" sequence="6"/>
+		<menuitem	id="type_savings_transaction"	name="Type of Savings Transaction" parent="savings_menu_group"	action="act_transaction_type" sequence="7"/>
+		<menuitem	id="savings_transaction"	name="Savings Transaction" parent="savings_menu_group"	action="act_saving_trans" sequence="8"/>
 
 </odoo>

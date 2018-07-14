@@ -67,6 +67,84 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
+        <!-- END INTEREST -->
+
+        <!-- TRANSACTION TYPE -->
+        <record id="transaction_type_form_view" model="ir.ui.view">
+            <field name="name">Transaction Type Form</field>
+            <field name="model">transaction.type</field>
+            <field name="arch" type="xml">
+                <form string="transaction_type_form">
+                    <sheet>
+                        <group>
+                            <field name="trans_type"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="transaction_type_tree_view" model="ir.ui.view">
+            <field name="name">Transaction Type Tree</field>
+            <field name="model">transaction.type</field>
+            <field name="arch" type="xml">
+                <tree string="transaction_type_tree">
+                    <field name="trans_type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="act_transaction_type" model="ir.actions.act_window">
+            <field name="name">Transaction Type</field>
+            <field name="res_model">transaction.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- END TRANSACTION TYPE -->
+
+        <!-- SAVINGS TRANSACTION -->
+        <record id="savings_trans_form_view" model="ir.ui.view">
+            <field name="name">Savings Transaction Form</field>
+            <field name="model">savings.trans</field>
+            <field name="arch" type="xml">
+                <form string="savings_trans_form">
+                    <!--<header>
+
+                        <field name="state" widget="statusbar" statusbar_visible="open,done"/>
+                    </header>-->
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="trans_number"/></h1>
+                        </div>
+                        <group>
+                            <field name="date"/>
+                            <field name="amount"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="savings_trans_tree_view" model="ir.ui.view">
+            <field name="name">Savings Transaction Tree</field>
+            <field name="model">savings.trans</field>
+            <field name="arch" type="xml">
+                <tree string="savings_trans_tree">
+                    <field name="trans_number"/>
+                    <field name="date"/>
+                    <field name="amount"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="act_saving_trans" model="ir.actions.act_window">
+            <field name="name">Savings Transaction</field>
+            <field name="res_model">savings.trans</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
 
     </data>
 </odoo>
