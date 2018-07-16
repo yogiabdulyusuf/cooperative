@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <!-- LOAN TYPE -->
+        <record id="loan_type_form" model="ir.ui.view">
+           <field name="name">Loan Type Form</field>
+           <field name="model">loan.type</field>
+           <field name="arch" type="xml">
+               <form string="loan_type_form">
+                   <sheet>
+                       <group>
+                           <field name="loan_type"/>
+                           <field name="max"/>
+                           <field name="choice"/>
+                       </group>
+                   </sheet>
+               </form>
+           </field>
+        </record>
+
+        <record id="loan_type_tree" model="ir.ui.view">
+            <field name="name">Loan Type Tree</field>
+            <field name="model">loan.type</field>
+            <field name="arch" type="xml">
+                <tree string="loan_type_tree">
+                    <field name="loan_type"/>
+                    <field name="max"/>
+                    <field name="choice"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="act_loan_type" model="ir.actions.act_window">
+            <field name="name">Loan Type</field>
+            <field name="res_model">loan.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- END LOAN TYPE -->
+
+        <!-- LOAN INTEREST -->
+        <record id="loan_interest_form_view" model="ir.ui.view">
+            <field name="name">Loan Interest Form</field>
+            <field name="model">loan.interest</field>
+            <field name="arch" type="xml">
+                <form string="loan_interest_form">
+                    <sheet>
+                        <group>
+                            <field name="type_loan_interest"/>
+                            <field name="value_loan_interest"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="loan_interest_tree_view" model="ir.ui.view">
+            <field name="name">Loan Interest Tree</field>
+            <field name="model">loan.interest</field>
+            <field name="arch" type="xml">
+                <tree string="loan_interest_tree">
+                    <field name="type_loan_interest"/>
+                    <field name="value_loan_interest"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="act_loan_interest" model="ir.actions.act_window">
+            <field name="name">Loan Interest</field>
+            <field name="res_model">loan.interest</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- END LOAN INTEREST -->
+    
+    </data>
+</odoo>
