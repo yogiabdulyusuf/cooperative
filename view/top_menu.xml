@@ -3,15 +3,18 @@
 	<menuitem id="cooperative_menu_root" name="Cooperative"/>
 
 	<!-- This Menu Group Membership -->
-	<menuitem id="membership_menu_group" parent="cooperative_menu_root" name="Membership" />
-		<menuitem	id="menu_membership"	name="Membership" parent="membership_menu_group"	action="act_membership" sequence="3"/>
+	<menuitem id="membership_menu_group" parent="cooperative_menu_root" name="Membership" sequence="3"/>
+		<menuitem	id="menu_membership"	name="Membership" parent="membership_menu_group"	action="act_membership" />
 
 	<!-- This Menu Group Savings -->
-	<menuitem id="savings_menu_group" parent="cooperative_menu_root" name="Savings" />
-		<menuitem	id="type_savings"	name="Savings Type" parent="savings_menu_group"	action="act_savings_type" sequence="5"/>
-		<menuitem	id="type_savings_interest"	name="Type of Savings Interest" parent="savings_menu_group"	action="act_savings_interest" sequence="6"/>
-		<menuitem	id="type_savings_transaction"	name="Type of Savings Transaction" parent="savings_menu_group"	action="act_transaction_type" sequence="7"/>
-		<menuitem	id="savings_transaction"	name="Savings Transaction" parent="savings_menu_group"	action="act_saving_trans" sequence="8"/>
-		<menuitem	id="savings_account"	name="Savings Account" parent="savings_menu_group"	action="act_saving_account" sequence="9"/>
-
+	<menuitem id="savings_menu_group" parent="cooperative_menu_root" name="Savings" sequence="8"/>
+		<menuitem	id="type_savings"	name="Savings Type" parent="savings_menu_group"	action="act_savings_type" />
+		<menuitem	id="type_savings_interest"	name="Type of Savings Interest" parent="savings_menu_group"	action="act_savings_interest" />
+		<menuitem	id="type_savings_transaction"	name="Type of Savings Transaction" parent="savings_menu_group"	action="act_transaction_type" />
+		<menuitem	id="savings_transaction"	name="Savings Transaction" parent="savings_menu_group"	action="act_saving_trans" />
+		<menuitem	id="savings_account"	name="Savings Account" parent="savings_menu_group"	action="act_saving_account" />
+	<!-- This Menu Group Savings -->
+	<menuitem id="loan_menu_group" parent="cooperative_menu_root" name="Loan" sequence="14"/>
+		<menuitem	id="type_loan"	name="Loan Type" parent="loan_menu_group"	action="act_loan_type" />
+		<menuitem	id="type_loan_interest"	name="Type of Loan Interest" parent="loan_menu_group"	action="act_loan_interest" />
 </odoo>
