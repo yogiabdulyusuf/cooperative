@@ -109,10 +109,12 @@
             <field name="model">savings.trans</field>
             <field name="arch" type="xml">
                 <form string="savings_trans_form">
-                    <!--<header>
+                    <header>
 
+                        <button name="trans_close" string="Close" type="object" class="oe_highlight" confirm="Are you sure to close..?" states="open" />
+                        <button name="trans_re_open" string="Re-Open" type="object" class="oe_highlight" confirm="Are you sure to Re-Open...?" states="done" />
                         <field name="state" widget="statusbar" statusbar_visible="open,done"/>
-                    </header>-->
+                    </header>
                     <sheet>
                         <div class="oe_title">
                             <label for="name" class="oe_edit_only"/>
@@ -153,10 +155,9 @@
             <field name="model">savings.account</field>
             <field name="arch" type="xml">
                 <form string="savings_account_form">
-                    <!--<header>
+                    <header>
 
-                        <field name="state" widget="statusbar" statusbar_visible="open,done"/>
-                    </header>-->
+                    </header>
                     <sheet>
                         <div class="oe_title">
                             <label for="name" class="oe_edit_only"/>
