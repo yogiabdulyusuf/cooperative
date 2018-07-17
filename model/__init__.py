@@ -1,3 +1,3 @@
 import membership
 import savings
-import loan
+from coorperative import loan
