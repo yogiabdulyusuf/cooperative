@@ -20,9 +20,10 @@ Cooperative
 
 """,
 	"data": [
+		"view/top_menu.xml",
 		"view/membership_view.xml",
 		"view/savings_view.xml",
-		"view/top_menu.xml",
+		"view/loan_view.xml.xml",
 	],
 	"installable": True,
 	"auto_install": False,
