@@ -1,3 +1,3 @@
 import membership
 import savings
-from coorperative import loan
+from coorperative.model import loan
