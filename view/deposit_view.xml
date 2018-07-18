@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- LONG DEPOSITS -->
+        <record id="long_deposit_form_view" model="ir.ui.view">
+           <field name="name">Long Deposit Form</field>
+           <field name="model">long.deposits</field>
+           <field name="arch" type="xml">
+               <form string="long_deposit_form">
+                   <sheet>
+                       <group>
+                            <field name="long_deposits"/>
+                            <field name="choice_deposit"/>
+                       </group>
+                   </sheet>
+               </form>
+           </field>
+        </record>
+
+        <record id="long_deposit_tree_view" model="ir.ui.view">
+            <field name="name">Long Deposit Tree</field>
+            <field name="model">long.deposits</field>
+            <field name="arch" type="xml">
+                <tree string="long_deposit_tree">
+                    <field name="long_deposits"/>
+                    <field name="choice_deposit"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="act_long_deposit" model="ir.actions.act_window">
+            <field name="name">Long Deposit</field>
+            <field name="res_model">long.deposits</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- END LONG DEPOSIT -->
+
+    </data>
+</odoo>
