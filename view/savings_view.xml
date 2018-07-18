@@ -35,35 +35,35 @@
         <!-- END SAVING TYPE -->
 
         <!-- SAVING INTEREST -->
-        <record id="interest_form_view" model="ir.ui.view">
-            <field name="name">Savings Interest Form</field>
-            <field name="model">savings.interest</field>
+        <record id="accounttype_form_view" model="ir.ui.view">
+            <field name="name">Savings Account Type Form</field>
+            <field name="model">savings.account.type</field>
             <field name="arch" type="xml">
-                <form string="interest_form">
+                <form string="accounttype_form">
                     <sheet>
                         <group>
-                            <field name="type_interest"/>
-                            <field name="value_interest"/>
+                            <field name="name"/>
+                            <field name="interest"/>
                         </group>
                     </sheet>
                 </form>
             </field>
         </record>
 
-        <record id="interest_tree_view" model="ir.ui.view">
-            <field name="name">Savings Interest Tree</field>
-            <field name="model">savings.interest</field>
+        <record id="accounttype_tree_view" model="ir.ui.view">
+            <field name="name">Savings Account Type Tree</field>
+            <field name="model">savings.account.type</field>
             <field name="arch" type="xml">
-                <tree string="interest_tree">
-                    <field name="type_interest"/>
-                    <field name="value_interest"/>
+                <tree string="accounttype_tree">
+                    <field name="name"/>
+                    <field name="interest"/>
                 </tree>
             </field>
         </record>
 
-        <record id="act_savings_interest" model="ir.actions.act_window">
-            <field name="name">Savings Interest</field>
-            <field name="res_model">savings.interest</field>
+        <record id="act_savings_account_type" model="ir.actions.act_window">
+            <field name="name">Savings Account Type</field>
+            <field name="res_model">savings.account.type</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
@@ -159,11 +159,10 @@
 
                     </header>
                     <sheet>
-                        <div class="oe_title">
-                            <label for="name" class="oe_edit_only"/>
-                            <h1><field name="account_number"/></h1>
-                        </div>
-                        <!-- <group> </group> -->
+                        <group>
+                            <field name="account_number"/>
+                            <field name="name" />
+                        </group>
                     </sheet>
                 </form>
             </field>
@@ -175,6 +174,7 @@
             <field name="arch" type="xml">
                 <tree string="savings_account_tree">
                     <field name="account_number"/>
+                    <field name="name" />
                 </tree>
             </field>
         </record>

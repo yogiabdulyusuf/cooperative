@@ -6,9 +6,9 @@ class LoanType(models.Model):
     _rec_name = 'loan_type'
     _description = 'Loan Type'
 
-    loan_type = fields.Char(string="Loan Type", required=True, )
-    max       = fields.Integer(string="Max", required=True, )
-    choice = fields.Selection(string="Choice", selection=[('month', 'Month'), ('year', 'Year'), ], required=True, )
+    loan_type   = fields.Char(string="Loan Type", required=True, )
+    max         = fields.Integer(string="Max", required=True, )
+    choice      = fields.Selection(string="Choice", selection=[('month', 'Month'), ('year', 'Year'), ], required=True, )
 
 
 # LOAN INTEREST
@@ -32,3 +32,13 @@ class LoanTrans(models.Model):
     estimate_start_date = fields.Date(string="Estimate Start Date", required=True, )
     installment         = fields.Char(string="Installment", required=True, )
     amount              = fields.Float(string="Amount",  required=True, )
+
+
+# LOAN TRANSACTION LINE
+class LoanTransLine(models.Model):
+    _name = 'loan.trans_line'
+    _description = 'Loan Transaction Line'
+
+    sequence            = fields.Char(string="Sequence", required=False, )
+    due_date            = fields.Date(string="Due Date", required=True, )
+    amount_trans_line   = fields.Float(string="Amount",  required=True, )

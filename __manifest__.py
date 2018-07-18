@@ -23,6 +23,7 @@ Cooperative
 		"view/membership_view.xml",
 		"view/savings_view.xml",
 		"view/loan_view.xml",
+		"view/deposit_view.xml",
 		"view/top_menu.xml",
 	],
 	"installable": True,

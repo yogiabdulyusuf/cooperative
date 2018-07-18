@@ -11,13 +11,12 @@ class Savings(models.Model):
     name_savings_type = fields.Char(string="Savings Type", required=True, )
 
 # SAVINGS TYPE INTEREST
-class SavingInterest(models.Model):
-    _name = 'savings.interest'
-    _rec_name = 'type_interest'
+class SavingAccountType(models.Model):
+    _name = 'savings.account.type'
     _description = 'Interest'
 
-    type_interest = fields.Char(string="Type of Savings Interest", required=True, )
-    value_interest = fields.Float(string="Value of Savings Interest",  required=True, )
+    name = fields.Char(string="Name", required=True, )
+    interest = fields.Float(string="Interest",  required=True, )
 
 # TRANSACTION TYPE
 class TransactionType(models.Model):
@@ -58,4 +57,4 @@ class SavingsAccount(models.Model):
     _description = 'Savings Account'
 
     account_number = fields.Char(string="Account Number", required=True, )
-    new_field_id = fields.Many2one(comodel_name="", string="Account Type", required=True, )
+    name = fields.Many2one(comodel_name="res.partner", string="Name", required=True, )

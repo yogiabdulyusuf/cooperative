@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        
+
         <!-- LOAN TYPE -->
-        <record id="loan_type_form" model="ir.ui.view">
+        <record id="loan_type_form_view" model="ir.ui.view">
            <field name="name">Loan Type Form</field>
            <field name="model">loan.type</field>
            <field name="arch" type="xml">
@@ -19,7 +19,7 @@
            </field>
         </record>
 
-        <record id="loan_type_tree" model="ir.ui.view">
+        <record id="loan_type_tree_view" model="ir.ui.view">
             <field name="name">Loan Type Tree</field>
             <field name="model">loan.type</field>
             <field name="arch" type="xml">
@@ -115,5 +115,42 @@
             <field name="view_mode">tree,form</field>
         </record>
         <!-- END LOAN TRANSACTION -->
+
+        <!-- LOAN TRANSACTION LINE -->
+        <record id="loan_trans_line_form_view" model="ir.ui.view">
+            <field name="name">Loan Trans Line Form</field>
+            <field name="model">loan.trans_line</field>
+            <field name="arch" type="xml">
+                <form string="loan_trans_line_form">
+                    <sheet>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="due_date"/>
+                            <field name="amount_trans_line"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="loan_trans_line_tree_view" model="ir.ui.view">
+            <field name="name">Loan Trans Line Tree</field>
+            <field name="model">loan.trans_line</field>
+            <field name="arch" type="xml">
+                <tree string="loan_trans_line_tree">
+                    <field name="sequence"/>
+                    <field name="due_date"/>
+                    <field name="amount_trans_line"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="act_loan_trans_line" model="ir.actions.act_window">
+            <field name="name">Loan Trans Line</field>
+            <field name="res_model">loan.trans_line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- END LOAN TRANSACTION LINE-->
     </data>
 </odoo>
