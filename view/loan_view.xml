@@ -47,8 +47,8 @@
                 <form string="loan_interest_form">
                     <sheet>
                         <group>
-                            <field name="type_loan_interest"/>
-                            <field name="value_loan_interest"/>
+                            <field name="name"/>
+                            <field name="interest"/>
                         </group>
                     </sheet>
                 </form>
@@ -60,8 +60,8 @@
             <field name="model">loan.interest</field>
             <field name="arch" type="xml">
                 <tree string="loan_interest_tree">
-                    <field name="type_loan_interest"/>
-                    <field name="value_loan_interest"/>
+                    <field name="name"/>
+                    <field name="interest"/>
                 </tree>
             </field>
         </record>
@@ -84,6 +84,8 @@
                     <sheet>
                         <group>
                             <field name="trans_number"/>
+                            <field name="loan_type"/>
+                            <field name="name"/>
                             <field name="date_loan_trans"/>
                             <field name="estimate_start_date"/>
                             <field name="installment"/>
@@ -100,6 +102,8 @@
             <field name="arch" type="xml">
                 <tree string="loan_trans_tree">
                     <field name="trans_number"/>
+                    <field name="loan_type"/>
+                    <field name="name"/>
                     <field name="date_loan_trans"/>
                     <field name="estimate_start_date"/>
                     <field name="installment"/>
@@ -152,5 +156,6 @@
             <field name="view_mode">tree,form</field>
         </record>
         <!-- END LOAN TRANSACTION LINE-->
+
     </data>
 </odoo>

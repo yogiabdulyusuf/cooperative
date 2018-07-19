@@ -14,11 +14,10 @@ class LoanType(models.Model):
 # LOAN INTEREST
 class LoanInterest(models.Model):
     _name = 'loan.interest'
-    _rec_name = 'type_loan_interest'
     _description = 'Loan Interest'
 
-    type_loan_interest = fields.Char(string="Type of Loan Interest", required=True, )
-    value_loan_interest = fields.Float(string="Value of Loan Interest",  required=True, )
+    name = fields.Char(string="Name", required=True, )
+    interest    = fields.Float(string="Interest",  required=True, )
 
 
 # LOAN TRANSACTION
@@ -28,6 +27,8 @@ class LoanTrans(models.Model):
     _description = 'Loan Transaction'
 
     trans_number        = fields.Integer(string="Transaction Number", required=False, )
+    loan_type           = fields.Many2one(comodel_name="loan.type", string="Loan Type", required=True, )
+    name                = fields.Many2one(comodel_name="loan.interest", string="Interest Type", required=True, )
     date_loan_trans     = fields.Date(string="Date", required=True, )
     estimate_start_date = fields.Date(string="Estimate Start Date", required=True, )
     installment         = fields.Char(string="Installment", required=True, )
