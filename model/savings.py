@@ -3,6 +3,9 @@ import logging
 
 _logger = logging.getLogger(__name__)
 
+STATES = [('open', 'Open'), ('done', 'Done')]
+
+
 # SAVINGS TYPE
 class Savings(models.Model):
     _name = 'savings.type'
@@ -27,8 +30,6 @@ class TransactionType(models.Model):
     trans_type = fields.Char(string="Transaction Type", required=True, )
 
 # SAVINGS TRANSACTION
-
-STATES = [('open','Open'), ('done','Done')]
 
 class SavingsTransaction(models.Model):
     _name = 'savings.trans'

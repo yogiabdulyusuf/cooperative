@@ -11,7 +11,7 @@
                    <sheet>
                        <group>
                            <field name="loan_type"/>
-                           <field name="max"/>
+                           <field name="value"/>
                            <field name="choice"/>
                        </group>
                    </sheet>
@@ -25,7 +25,7 @@
             <field name="arch" type="xml">
                 <tree string="loan_type_tree">
                     <field name="loan_type"/>
-                    <field name="max"/>
+                    <field name="value"/>
                     <field name="choice"/>
                 </tree>
             </field>
@@ -81,6 +81,10 @@
             <field name="model">loan.trans</field>
             <field name="arch" type="xml">
                 <form string="loan_trans_form">
+                    <header>
+
+                        <field name="state" widget="statusbar" statusbar_visible="draft,request,review,approve,reject,done"/>
+                    </header>
                     <sheet>
                         <group>
                             <field name="trans_number"/>
@@ -126,6 +130,10 @@
             <field name="model">loan.trans_line</field>
             <field name="arch" type="xml">
                 <form string="loan_trans_line_form">
+                    <header>
+
+                        <field name="state" widget="statusbar" statusbar_visible="open,done"/>
+                    </header>
                     <sheet>
                         <group>
                             <field name="sequence"/>
