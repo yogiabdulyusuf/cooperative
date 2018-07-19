@@ -21,13 +21,6 @@ class SavingAccountType(models.Model):
     name = fields.Char(string="Name", required=True, )
     interest = fields.Float(string="Interest",  required=True, )
 
-# TRANSACTION TYPE
-class TransactionType(models.Model):
-    _name = 'transaction.type'
-    _rec_name = 'trans_type'
-    _description = 'Transaction Type'
-
-    trans_type = fields.Char(string="Transaction Type", required=True, )
 
 # SAVINGS TRANSACTION
 
@@ -46,10 +39,11 @@ class SavingsTransaction(models.Model):
         self.state = "open" #pindah state ke open
 
 
-    trans_number = fields.Integer(string="Transaction Number", required=True, )
-    date = fields.Date(string="Date", required=True, )
-    amount = fields.Float(string="Amount",  required=True, )
-    state = fields.Selection(string="", selection=STATES, required=True, default='open' )
+    trans_number        = fields.Integer(string="Transaction Number", required=True, )
+    date                = fields.Date(string="Date", required=True, )
+    account_number      = fields.Many2one(comodel_name="savings.account", string="Savings Account", required=True, )
+    amount              = fields.Float(string="Amount",  required=True, )
+    state               = fields.Selection(string="", selection=STATES, required=True, default='open' )
 
 # SAVINGS ACCOUNT
 class SavingsAccount(models.Model):

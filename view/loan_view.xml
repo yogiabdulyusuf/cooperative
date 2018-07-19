@@ -39,41 +39,6 @@
         </record>
         <!-- END LOAN TYPE -->
 
-        <!-- LOAN INTEREST -->
-        <record id="loan_interest_form_view" model="ir.ui.view">
-            <field name="name">Loan Interest Form</field>
-            <field name="model">loan.interest</field>
-            <field name="arch" type="xml">
-                <form string="loan_interest_form">
-                    <sheet>
-                        <group>
-                            <field name="name"/>
-                            <field name="interest"/>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-
-        <record id="loan_interest_tree_view" model="ir.ui.view">
-            <field name="name">Loan Interest Tree</field>
-            <field name="model">loan.interest</field>
-            <field name="arch" type="xml">
-                <tree string="loan_interest_tree">
-                    <field name="name"/>
-                    <field name="interest"/>
-                </tree>
-            </field>
-        </record>
-
-        <record id="act_loan_interest" model="ir.actions.act_window">
-            <field name="name">Loan Interest</field>
-            <field name="res_model">loan.interest</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-        </record>
-        <!-- END LOAN INTEREST -->
-
 
         <!-- LOAN TRANSACTION -->
         <record id="loan_trans_form_view" model="ir.ui.view">
@@ -89,7 +54,7 @@
                         <group>
                             <field name="trans_number"/>
                             <field name="loan_type"/>
-                            <field name="name"/>
+                            <field name="loan_interest" />
                             <field name="date_loan_trans"/>
                             <field name="estimate_start_date"/>
                             <field name="installment"/>
@@ -107,7 +72,7 @@
                 <tree string="loan_trans_tree">
                     <field name="trans_number"/>
                     <field name="loan_type"/>
-                    <field name="name"/>
+                    <field name="loan_interest" />
                     <field name="date_loan_trans"/>
                     <field name="estimate_start_date"/>
                     <field name="installment"/>

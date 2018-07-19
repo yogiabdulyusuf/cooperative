@@ -10,13 +10,11 @@
 	<menuitem id="savings_menu_group" parent="cooperative_menu_root" name="Savings" sequence="8"/>
 		<menuitem	id="type_savings"	name="Savings Type" parent="savings_menu_group"	action="act_savings_type" />
 		<menuitem	id="account_type"	name="Account Type" parent="savings_menu_group"	action="act_savings_account_type" />
-		<menuitem	id="type_savings_transaction"	name="Transaction Type" parent="savings_menu_group"	action="act_transaction_type" />
 		<menuitem	id="savings_transaction"	name="Savings Transaction" parent="savings_menu_group"	action="act_saving_trans" />
 		<menuitem	id="savings_account"	name="Savings Account" parent="savings_menu_group"	action="act_saving_account" />
 	<!-- This Menu Group Savings -->
 	<menuitem id="loan_menu_group" parent="cooperative_menu_root" name="Loan" sequence="17"/>
 		<menuitem	id="type_loan"	name="Loan Type" parent="loan_menu_group"	action="act_loan_type" />
-		<menuitem	id="type_loan_interest"	name="Interest Type" parent="loan_menu_group"	action="act_loan_interest" />
 		<menuitem	id="type_loan_trans"	name="Loan Transaction" parent="loan_menu_group"	action="act_loan_trans" />
 		<menuitem	id="type_loan_trans_line"	name="Loan Transaction Line" parent="loan_menu_group"	action="act_loan_trans_line" />
 
