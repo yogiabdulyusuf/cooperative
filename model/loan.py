@@ -24,14 +24,14 @@ class LoanTrans(models.Model):
     _description = 'Loan Transaction'
 
 
-    trans_number        = fields.Integer(string="Transaction Number", required=False, )
+    trans_number        = fields.Char(string="Transaction Number", required=False, )
     loan_type           = fields.Many2one(comodel_name="loan.type", string="Loan Type", required=True, )
     loan_interest       = fields.Selection(string="Loan Interest", selection=[('flat', 'Flat'), ('fluktuatif', 'Fluktuatif'), ], required=True, )
     date_loan_trans     = fields.Date(string="Date", required=True, )
     estimate_start_date = fields.Date(string="Estimate Start Date", required=True, )
-    installment         = fields.Char(string="Installment", required=True, )
-    amount              = fields.Float(string="Amount",  required=True, )
+    quantity            = fields.Float(string="Quantity",  required=True, )
     state               = fields.Selection(string="", selection=STATES, required=True, default='draft' )
+    loan_trans_line     = fields.One2many(comodel_name="loan.trans_line", inverse_name="loan_trans_line_id", string="Loan Trans Line", )
 
 
 # LOAN TRANSACTION LINE
@@ -39,7 +39,8 @@ class LoanTransLine(models.Model):
     _name = 'loan.trans_line'
     _description = 'Loan Transaction Line'
 
-    sequence            = fields.Char(string="Sequence", required=False, )
+    installment         = fields.Char(string="Installment", required=True, )
     due_date            = fields.Date(string="Due Date", required=True, )
-    amount_trans_line   = fields.Float(string="Amount",  required=True, )
+    amount              = fields.Float(string="Amount",  required=True, )
     state = fields.Selection(string="", selection=[('open', 'Open'), ('done', 'Done'), ], required=True, default="open" )
+    loan_trans_line_id  = fields.Many2one(comodel_name="loan.trans", string="Loan Trans Line Header", required=True, )
