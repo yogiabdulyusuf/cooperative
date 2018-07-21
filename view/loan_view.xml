@@ -10,9 +10,15 @@
                <form string="loan_type_form">
                    <sheet>
                        <group>
-                           <field name="loan_type"/>
-                           <field name="value"/>
-                           <field name="choice"/>
+                           <group>
+                                <field name="loan_type"/>
+                                <field name="value"/>
+                           </group>
+                           <group>
+                                <field name="choice"/>
+                                <field name="advance_money"/>
+                           </group>
+                                <field name="agunan"/>
                        </group>
                    </sheet>
                </form>

@@ -45,8 +45,8 @@ class SavingsAccount(models.Model):
     account_number     = fields.Char(string="Account Number" )
     interest           = fields.Selection(string="Savings Interest", selection=[('flat', 'Flat'), ('fluktuatif', 'Fluktuatif'), ], required=True, )
     name               = fields.Many2one(comodel_name="res.partner", string="Name", required=True, )
-    principal_savings  = fields.Float(string="Principal Savings",  required=False, )
-    mandatory_savings  = fields.Float(string="Mandatory Savings", required=False, )
+    principal_saving  = fields.Float(string="Principal Savings", required=True, )
+    mandatory_saving  = fields.Float(string="Mandatory Savings", required=True, )
     amount             = fields.Float(string="Amount", required=True, )
     savings_list       = fields.One2many(comodel_name="savings.list", inverse_name="saving_list_id", string="Savings List", )
 

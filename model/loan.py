@@ -15,6 +15,8 @@ class LoanType(models.Model):
     loan_type   = fields.Char(string="Loan Type", required=True, )
     value       = fields.Integer(string="Max", required=True, )
     choice      = fields.Selection(string="Choice", selection=[('month', 'Month'), ('year', 'Year'), ], required=True, )
+    agunan      = fields.Text(string="Agunan", required=False, )
+    advance_money = fields.Float(string="Advance",  required=False, )
 
 
 # LOAN TRANSACTION

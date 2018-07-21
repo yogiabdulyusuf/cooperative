@@ -79,8 +79,8 @@
                                 <field name="interest"/>
                             </group>
                             <group>
-                                <field name="principal_savings" />
-                                <field name="mandatory_savings" />
+                                <field name="principal_saving" />
+                                <field name="mandatory_saving" />
                             </group>
                             <group>
                                 <field name="amount" />
