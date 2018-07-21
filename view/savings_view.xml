@@ -34,41 +34,6 @@
         </record>
         <!-- END SAVING TYPE -->
 
-        <!-- SAVING INTEREST -->
-        <record id="accounttype_form_view" model="ir.ui.view">
-            <field name="name">Savings Account Type Form</field>
-            <field name="model">savings.account.type</field>
-            <field name="arch" type="xml">
-                <form string="accounttype_form">
-                    <sheet>
-                        <group>
-                            <field name="name"/>
-                            <field name="interest"/>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-
-        <record id="accounttype_tree_view" model="ir.ui.view">
-            <field name="name">Savings Account Type Tree</field>
-            <field name="model">savings.account.type</field>
-            <field name="arch" type="xml">
-                <tree string="accounttype_tree">
-                    <field name="name"/>
-                    <field name="interest"/>
-                </tree>
-            </field>
-        </record>
-
-        <record id="act_savings_account_type" model="ir.actions.act_window">
-            <field name="name">Savings Account Type</field>
-            <field name="res_model">savings.account.type</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-        </record>
-        <!-- END INTEREST -->
-
 
         <!-- SAVINGS TRANSACTION -->
         <record id="savings_trans_form_view" model="ir.ui.view">
@@ -83,11 +48,24 @@
                         <field name="state" widget="statusbar" statusbar_visible="open,done"/>
                     </header>
                     <sheet>
+                        <div class="oe_title">
+                            <label for="saving_trans_id" class="oe_edit_only" string="Transaction Number" />
+                            <h1>
+                                <field name="saving_trans_id"/>
+                            </h1>
+                        </div>
                         <group>
-                            <field name="trans_number"/>
-                            <field name="date"/>
-                            <field name="account_number"/>
-                            <field name="amount"/>
+                            <group>
+                                <field name="date"/>
+                                <field name="account_number"/>
+                            </group>
+                            <group>
+                                <field name="trans_type"/>
+                            </group>
+                            <group>
+                                <field name="amount"/>
+                            </group>
+
                         </group>
                     </sheet>
                 </form>
@@ -99,7 +77,7 @@
             <field name="model">savings.trans</field>
             <field name="arch" type="xml">
                 <tree string="savings_trans_tree">
-                    <field name="trans_number"/>
+                    <field name="saving_trans_id"/>
                     <field name="date"/>
                     <field name="account_number"/>
                     <field name="amount"/>
@@ -121,14 +99,34 @@
             <field name="model">savings.account</field>
             <field name="arch" type="xml">
                 <form string="savings_account_form">
-                    <header>
-
-                    </header>
                     <sheet>
+                        <div class="oe_title">
+                            <label for="account_number" class="oe_edit_only" string="Transaction Number" />
+                            <h1>
+                                <field name="account_number"/>
+                            </h1>
+                        </div>
                         <group>
-                            <field name="account_number"/>
-                            <field name="name" />
+                            <group>
+                                <field name="name" />
+                                <field name="interest"/>
+                            </group>
+                            <group>
+                                <field name="principal_savings" />
+                                <field name="mandatory_savings" />
+                            </group>
+                            <group>
+                                <field name="amount" />
+                            </group>
                         </group>
+
+                        <field name="savings_list">
+                            <tree string="Savings List" editable="bottom">
+                                <field name="date_savings" />
+                                <field name="voluntary_savings" />
+                                <field name="mandatory_savings" />
+                            </tree>
+                        </field>
                     </sheet>
                 </form>
             </field>
@@ -141,6 +139,7 @@
                 <tree string="savings_account_tree">
                     <field name="account_number"/>
                     <field name="name" />
+                    <field name="interest"/>
                 </tree>
             </field>
         </record>

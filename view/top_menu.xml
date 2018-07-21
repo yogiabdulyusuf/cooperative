@@ -9,7 +9,6 @@
 	<!-- This Menu Group Savings -->
 	<menuitem id="savings_menu_group" parent="cooperative_menu_root" name="Savings" sequence="8"/>
 		<menuitem	id="type_savings"	name="Savings Type" parent="savings_menu_group"	action="act_savings_type" />
-		<menuitem	id="account_type"	name="Account Type" parent="savings_menu_group"	action="act_savings_account_type" />
 		<menuitem	id="savings_transaction"	name="Savings Transaction" parent="savings_menu_group"	action="act_saving_trans" />
 		<menuitem	id="savings_account"	name="Savings Account" parent="savings_menu_group"	action="act_saving_account" />
 	<!-- This Menu Group Savings -->
