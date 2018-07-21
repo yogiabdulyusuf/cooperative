@@ -1,39 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- SAVING TYPE -->
-        <record id="savings_type_form" model="ir.ui.view">
-           <field name="name">Savings Type Form</field>
-           <field name="model">savings.type</field>
-           <field name="arch" type="xml">
-               <form string="savings_type_form">
-                   <sheet>
-                       <group>
-                           <field name="name_savings_type"/>
-                       </group>
-                   </sheet>
-               </form>
-           </field>
-        </record>
-
-        <record id="savings_type_tree" model="ir.ui.view">
-            <field name="name">Savings Type Tree</field>
-            <field name="model">savings.type</field>
-            <field name="arch" type="xml">
-                <tree string="savings_type_tree">
-                    <field name="name_savings_type"/>
-                </tree>
-            </field>
-        </record>
-
-        <record id="act_savings_type" model="ir.actions.act_window">
-            <field name="name">Savings Type</field>
-            <field name="res_model">savings.type</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-        </record>
-        <!-- END SAVING TYPE -->
-
 
         <!-- SAVINGS TRANSACTION -->
         <record id="savings_trans_form_view" model="ir.ui.view">
@@ -101,7 +68,7 @@
                 <form string="savings_account_form">
                     <sheet>
                         <div class="oe_title">
-                            <label for="account_number" class="oe_edit_only" string="Transaction Number" />
+                            <label for="account_number" class="oe_edit_only" string="Account Number" />
                             <h1>
                                 <field name="account_number"/>
                             </h1>

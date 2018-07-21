@@ -24,14 +24,19 @@ class LoanTrans(models.Model):
     _description = 'Loan Transaction'
 
 
-    trans_number        = fields.Char(string="Transaction Number", required=False, )
+    trans_number        = fields.Char(string="Transaction Number", )
     loan_type           = fields.Many2one(comodel_name="loan.type", string="Loan Type", required=True, )
     loan_interest       = fields.Selection(string="Loan Interest", selection=[('flat', 'Flat'), ('fluktuatif', 'Fluktuatif'), ], required=True, )
-    date_loan_trans     = fields.Date(string="Date", required=True, )
+    date_loan_trans     = fields.Datetime(string="Date", required=True, readonly="True", default=fields.Datetime.now)
     estimate_start_date = fields.Date(string="Estimate Start Date", required=True, )
     quantity            = fields.Float(string="Quantity",  required=True, )
     state               = fields.Selection(string="", selection=STATES, required=True, default='draft' )
     loan_trans_line     = fields.One2many(comodel_name="loan.trans_line", inverse_name="loan_trans_line_id", string="Loan Trans Line", )
+
+    @api.model
+    def create(self, vals):
+        vals['trans_number'] = self.env['ir.sequence'].next_by_code('loan.trans')
+        return super(LoanTrans, self).create(vals)
 
 
 # LOAN TRANSACTION LINE
