@@ -47,13 +47,21 @@ class SavingsAccount(models.Model):
     name               = fields.Many2one(comodel_name="res.partner", string="Name", required=True, )
     principal_saving  = fields.Float(string="Principal Savings", required=True, )
     mandatory_saving  = fields.Float(string="Mandatory Savings", required=True, )
-    amount             = fields.Float(string="Amount", required=True, )
+    amount             = fields.Float(string="Amount", )
     savings_list       = fields.One2many(comodel_name="savings.list", inverse_name="saving_list_id", string="Savings List", )
 
     @api.model
     def create(self, vals):
         vals['account_number'] = self.env['ir.sequence'].next_by_code('savings.account')
         return super(SavingsAccount, self).create(vals)
+
+    @api.onchange('savings_list')
+    def sum_savings(self):
+        total = 0
+        for data_detail in self.savings_list:
+            total = total + data_detail.mandatory_savings
+
+        self.amount = total
 
 
 # SAVINGS list
