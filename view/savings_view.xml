@@ -83,7 +83,7 @@
                                 <field name="mandatory_saving" />
                             </group>
                             <group>
-                                <field name="amount" readonly="1" />
+                                <field name="balance" />
                             </group>
                         </group>
 
