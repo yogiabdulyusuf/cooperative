@@ -7,6 +7,24 @@ STATES = [('open', 'Open'), ('done', 'Done')]
 
 
 
+# TRANSACTION TYPE
+class TransactionType(models.Model):
+    _name = 'transaction.type'
+    _description = 'Transaction Type'
+
+    @api.multi
+    def name_get(self):
+        result = []
+        for record in self:
+            name = record.code + ' (' + record.name + ')'
+            result.append((record.id,name))
+        return result
+
+    code = fields.Char(string="Code", size=3, required=True, )
+    name = fields.Char(string="Name", required=True, )
+    type = fields.Selection(string="Type", selection=[('debit', 'Debit'), ('credit', 'Credit'), ], required=True, )
+
+
 # SAVINGS TRANSACTION
 
 class SavingsTransaction(models.Model):
@@ -23,11 +41,12 @@ class SavingsTransaction(models.Model):
     def trans_re_open(self):
         self.state = "open" #pindah state ke open
 
-    saving_trans_id = fields.Char(string="Transaction Number" )
-    date            = fields.Datetime(string="Date", required=True, readonly="True", default=fields.Datetime.now)
-    trans_type      = fields.Selection(string="Transaction Type", selection=[('deposits', 'Deposits'), ('taking', 'Taking'), ], required=True, )
+    saving_trans_id = fields.Char(string="Transaction Number", readonly=True )
+    date            = fields.Datetime(string="Date", required=True, readonly=True, default=fields.Datetime.now)
+    trans_type_id   = fields.Many2one(comodel_name="transaction.type", string="Transaction Type", required=True, )
     account_number  = fields.Many2one(comodel_name="savings.account", string="Savings Account", required=True, )
-    amount          = fields.Float(string="Amount", required=True, )
+    debit           = fields.Float(string="Debit",  default=0.0)
+    credit          = fields.Float(string="Credit",  default=0.0)
     state           = fields.Selection(string="", selection=STATES, required=True, default='open' )
 
     @api.model
@@ -48,7 +67,7 @@ class SavingsAccount(models.Model):
     principal_saving  = fields.Float(string="Principal Savings", required=True, )
     mandatory_saving  = fields.Float(string="Mandatory Savings", required=True, )
     balance             = fields.Float(string="Balance", compute='calculate_total_balance', readonly=True)
-    savings_list       = fields.One2many(comodel_name="savings.list", inverse_name="saving_list_id", string="Savings List", )
+    savings_list       = fields.One2many(comodel_name="savings.trans", inverse_name="account_number", string="Savings List", )
 
     @api.model
     def create(self, vals):
@@ -59,7 +78,7 @@ class SavingsAccount(models.Model):
     def calculate_total_balance(self):
         total = 0
         for data_detail in self.savings_list:
-            total = total + data_detail.mandatory_savings
+            total = total + (data_detail.debit-data_detail.credit)
         self.balance = total
 
 

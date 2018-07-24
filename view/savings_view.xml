@@ -2,6 +2,44 @@
 <odoo>
     <data>
 
+        <!-- TRANSACTION TYPE -->
+        <record id="transaction_type_form_view" model="ir.ui.view">
+            <field name="name">Transaction Type Form</field>
+            <field name="model">transaction.type</field>
+            <field name="arch" type="xml">
+                <form string="transaction_type_form">
+                    <sheet>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="type"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="transaction_type_tree_view" model="ir.ui.view">
+            <field name="name">Transaction Type Tree</field>
+            <field name="model">transaction.type</field>
+            <field name="arch" type="xml">
+                <tree string="transaction_type_tree">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="act_transaction_type" model="ir.actions.act_window">
+            <field name="name">Transaction Type</field>
+            <field name="res_model">transaction.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- END TRANSACTION TYPE -->
+
         <!-- SAVINGS TRANSACTION -->
         <record id="savings_trans_form_view" model="ir.ui.view">
             <field name="name">Savings Transaction Form</field>
@@ -27,10 +65,13 @@
                                 <field name="account_number"/>
                             </group>
                             <group>
-                                <field name="trans_type"/>
+                                <field name="trans_type_id"/>
                             </group>
                             <group>
-                                <field name="amount" />
+                                <field name="debit" />
+                            </group>
+                            <group>
+                                <field name="credit" />
                             </group>
 
                         </group>
@@ -47,7 +88,6 @@
                     <field name="saving_trans_id"/>
                     <field name="date"/>
                     <field name="account_number"/>
-                    <field name="amount" />
                 </tree>
             </field>
         </record>
@@ -78,20 +118,20 @@
                                 <field name="name" />
                                 <field name="interest"/>
                             </group>
-                            <group>
-                                <field name="principal_saving" />
-                                <field name="mandatory_saving" />
-                            </group>
+
                             <group>
                                 <field name="balance" />
                             </group>
                         </group>
 
                         <field name="savings_list">
-                            <tree string="Savings List" editable="bottom">
-                                <field name="date_savings" />
-                                <field name="voluntary_savings" />
-                                <field name="mandatory_savings" />
+                            <tree string="Savings List" create="false" edit="false" delete="false">
+                                <field name="date" />
+                                <field name="trans_type_id" />
+                                <field name="debit" />
+                                <field name="credit" />
+                                <field name="state" />
+
                             </tree>
                         </field>
                     </sheet>

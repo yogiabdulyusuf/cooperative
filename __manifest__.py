@@ -4,9 +4,9 @@
 	"depends": [
 		"base",
 	],
-	"author": "jack-labs",
+	"author": "jakc-labs",
 	"category": "Cooperative",
-	'website': 'http://www.jack-labs.com',
+	'website': 'http://www.jakc-labs.com',
 	"description": """
 
 Cooperative
