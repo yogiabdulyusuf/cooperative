@@ -40,6 +40,28 @@
 
         <!-- END TRANSACTION TYPE -->
 
+
+
+        <!-- DEPOSIT FORM -->
+        <record id="act_deposit" model="ir.actions.act_window">
+            <field name="name">Savings Deposit Form</field>
+            <field name="res_model">savings.trans</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+        </record>
+        <!-- END DEPOSIT FORM -->
+
+        <!-- WITHDRAWAL FORM -->
+        <record id="act_withdrawal" model="ir.actions.act_window">
+            <field name="name">Savings Withdrawal Form</field>
+            <field name="res_model">savings.trans</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+        </record>
+        <!-- END WITHDRAWAL FORM -->
+
+
+
         <!-- SAVINGS TRANSACTION -->
         <record id="savings_trans_form_view" model="ir.ui.view">
             <field name="name">Savings Transaction Form</field>

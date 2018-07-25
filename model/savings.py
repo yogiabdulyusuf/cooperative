@@ -25,6 +25,7 @@ class TransactionType(models.Model):
     type = fields.Selection(string="Type", selection=[('debit', 'Debit'), ('credit', 'Credit'), ], required=True, )
 
 
+
 # SAVINGS TRANSACTION
 
 class SavingsTransaction(models.Model):
@@ -67,7 +68,7 @@ class SavingsAccount(models.Model):
     principal_saving  = fields.Float(string="Principal Savings", required=True, )
     mandatory_saving  = fields.Float(string="Mandatory Savings", required=True, )
     balance             = fields.Float(string="Balance", compute='calculate_total_balance', readonly=True)
-    savings_list       = fields.One2many(comodel_name="savings.trans", inverse_name="account_number", string="Savings List", )
+    savings_list       = fields.One2many(comodel_name="savings.trans", inverse_name="account_number", )
 
     @api.model
     def create(self, vals):
