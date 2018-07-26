@@ -100,3 +100,13 @@ class SavingsList(models.Model):
     @api.multi
     def unlink(self):
         pass
+
+# koreksi setor & tarik
+class Correction(models.Model):
+    _name = 'correction.deposit_withdrawal'
+    _rec_name = 'correction_id'
+    _description = 'Koreksi Setor Tarik'
+
+    correction_id = fields.Char(string="Correction ID", required=True, Readonly=True )
+    savings_trans_id = fields.Many2one(comodel_name="savings.trans", string="Transaction ID", required=True, )
+    description = fields.Text(string="Description", required=False, )
