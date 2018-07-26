@@ -42,26 +42,6 @@
 
 
 
-        <!-- DEPOSIT FORM -->
-        <record id="act_deposit" model="ir.actions.act_window">
-            <field name="name">Savings Deposit Form</field>
-            <field name="res_model">savings.trans</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">form</field>
-        </record>
-        <!-- END DEPOSIT FORM -->
-
-        <!-- WITHDRAWAL FORM -->
-        <record id="act_withdrawal" model="ir.actions.act_window">
-            <field name="name">Savings Withdrawal Form</field>
-            <field name="res_model">savings.trans</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">form</field>
-        </record>
-        <!-- END WITHDRAWAL FORM -->
-
-
-
         <!-- SAVINGS TRANSACTION -->
         <record id="savings_trans_form_view" model="ir.ui.view">
             <field name="name">Savings Transaction Form</field>
@@ -102,6 +82,86 @@
             </field>
         </record>
 
+
+        <record id="savings_trans_debit_view" model="ir.ui.view">
+            <field name="name">Savings Transaction Form</field>
+            <field name="model">savings.trans</field>
+            <field name="arch" type="xml">
+                <form string="savings_trans_form">
+                    <header>
+
+                        <button name="trans_close" string="Close" type="object" class="oe_highlight" confirm="Are you sure to close..?" states="open" />
+                        <button name="trans_re_open" string="Re-Open" type="object" class="oe_highlight" confirm="Are you sure to Re-Open...?" states="done" />
+                        <field name="state" widget="statusbar" statusbar_visible="open,done"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="saving_trans_id" class="oe_edit_only" string="Transaction Number" />
+                            <h1>
+                                <field name="saving_trans_id"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="date"/>
+                                <field name="account_number"/>
+                            </group>
+                            <group>
+                                <field name="trans_type_id" options='{"create":False,"create_edit": False,"no_open": True}' />
+                            </group>
+                            <group>
+                                <field name="debit"/>
+                            </group>
+                            <group>
+                                <field name="credit" invisible="1"/>
+                            </group>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="savings_trans_credit_view" model="ir.ui.view">
+            <field name="name">Savings Transaction Form</field>
+            <field name="model">savings.trans</field>
+            <field name="arch" type="xml">
+                <form string="savings_trans_form">
+                    <header>
+
+                        <button name="trans_close" string="Close" type="object" class="oe_highlight" confirm="Are you sure to close..?" states="open" />
+                        <button name="trans_re_open" string="Re-Open" type="object" class="oe_highlight" confirm="Are you sure to Re-Open...?" states="done" />
+                        <field name="state" widget="statusbar" statusbar_visible="open,done"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="saving_trans_id" class="oe_edit_only" string="Transaction Number" />
+                            <h1>
+                                <field name="saving_trans_id"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="date"/>
+                                <field name="account_number"/>
+                            </group>
+                            <group>
+                                <field name="trans_type_id" options='{"create":False,"create_edit": False,"no_open": True}' />
+                            </group>
+                            <group>
+                                <field name="debit" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="credit" />
+                            </group>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
         <record id="savings_trans_tree_view" model="ir.ui.view">
             <field name="name">Savings Transaction Tree</field>
             <field name="model">savings.trans</field>
@@ -114,6 +174,26 @@
             </field>
         </record>
 
+        <!-- DEPOSIT FORM -->
+        <record id="act_deposit" model="ir.actions.act_window">
+            <field name="name">Savings Deposit Form</field>
+            <field name="res_model">savings.trans</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="savings_trans_debit_view"/>
+        </record>
+        <!-- END DEPOSIT FORM -->
+
+        <!-- WITHDRAWAL FORM -->
+        <record id="act_withdrawal" model="ir.actions.act_window">
+            <field name="name">Savings Withdrawal Form</field>
+            <field name="res_model">savings.trans</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="savings_trans_credit_view"/>
+        </record>
+        <!-- END WITHDRAWAL FORM -->
+
         <record id="act_saving_trans" model="ir.actions.act_window">
             <field name="name">Savings Transaction</field>
             <field name="res_model">savings.trans</field>
@@ -121,6 +201,7 @@
             <field name="view_mode">tree,form</field>
         </record>
         <!-- END TRANSACTION TYPE -->
+
 
           <!-- SAVINGS ACCOUNT -->
         <record id="savings_account_form_view" model="ir.ui.view">

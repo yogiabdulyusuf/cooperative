@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="71333825-cf8e-4e3d-8144-c98f46082025" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/model/savings.py" afterPath="$PROJECT_DIR$/model/savings.py" />
+      <change beforePath="$PROJECT_DIR$/model/membership.py" afterPath="$PROJECT_DIR$/model/membership.py" />
       <change beforePath="$PROJECT_DIR$/view/savings_view.xml" afterPath="$PROJECT_DIR$/view/savings_view.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,21 +15,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="savings.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="savings_view.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/savings_view.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="194" column="36" lean-forward="false" selection-start-line="194" selection-start-column="36" selection-end-line="194" selection-end-column="36" />
+              <folding>
+                <element signature="n#record#3;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+                <element signature="n#record#4;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+                <element signature="n#record#5;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+                <element signature="n#record#6;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="savings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/savings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+            <state relative-caret-position="296">
+              <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="savings_view.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/savings_view.xml">
+      <file leaf-file-name="membership.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/model/membership.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1343">
-              <caret line="79" column="36" lean-forward="true" selection-start-line="79" selection-start-column="36" selection-end-line="79" selection-end-column="36" />
+            <state relative-caret-position="85">
+              <caret line="5" column="66" lean-forward="false" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -58,7 +73,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/model/membership.py" />
         <option value="$PROJECT_DIR$/__openerp__.py" />
         <option value="$PROJECT_DIR$/top_menu.xml" />
         <option value="$PROJECT_DIR$/view/membership_view.xml" />
@@ -72,6 +86,7 @@
         <option value="$PROJECT_DIR$/view/loan_view.xml" />
         <option value="$PROJECT_DIR$/model/savings.py" />
         <option value="$PROJECT_DIR$/view/savings_view.xml" />
+        <option value="$PROJECT_DIR$/model/membership.py" />
       </list>
     </option>
   </component>
@@ -199,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1532217028786</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update onchange">
+      <created>1532272751785</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1532272751785</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -235,7 +257,8 @@
     <MESSAGE value="update SAVINGS" />
     <MESSAGE value="update squence" />
     <MESSAGE value="update loan type" />
-    <option name="LAST_COMMIT_MESSAGE" value="update loan type" />
+    <MESSAGE value="update onchange" />
+    <option name="LAST_COMMIT_MESSAGE" value="update onchange" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -293,7 +316,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="901">
           <caret line="53" column="31" lean-forward="false" selection-start-line="36" selection-start-column="8" selection-end-line="69" selection-end-column="29" />
-          <folding />
+          <folding>
+            <element signature="n#record#3;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+            <element signature="n#record#4;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+            <element signature="n#record#5;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+            <element signature="n#record#6;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -338,7 +366,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="901">
           <caret line="53" column="31" lean-forward="false" selection-start-line="36" selection-start-column="8" selection-end-line="69" selection-end-column="29" />
-          <folding />
+          <folding>
+            <element signature="n#record#3;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+            <element signature="n#record#4;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+            <element signature="n#record#5;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+            <element signature="n#record#6;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -354,7 +387,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="31" column="31" lean-forward="false" selection-start-line="3" selection-start-column="8" selection-end-line="34" selection-end-column="32" />
-          <folding />
+          <folding>
+            <element signature="n#record#3;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+            <element signature="n#record#4;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+            <element signature="n#record#5;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+            <element signature="n#record#6;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -392,7 +430,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#record#3;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+            <element signature="n#record#4;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+            <element signature="n#record#5;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+            <element signature="n#record#6;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -507,13 +550,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/membership.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="60" lean-forward="true" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -583,16 +619,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/view/savings_view.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
-          <caret line="79" column="36" lean-forward="true" selection-start-line="79" selection-start-column="36" selection-end-line="79" selection-end-column="36" />
-          <folding />
+        <state relative-caret-position="374">
+          <caret line="194" column="36" lean-forward="false" selection-start-line="194" selection-start-column="36" selection-end-line="194" selection-end-column="36" />
+          <folding>
+            <element signature="n#record#3;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+            <element signature="n#record#4;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+            <element signature="n#record#5;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+            <element signature="n#record#6;n#data#0;n#odoo#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/savings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        <state relative-caret-position="296">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/membership.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="66" lean-forward="false" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
           <folding />
         </state>
       </provider>
