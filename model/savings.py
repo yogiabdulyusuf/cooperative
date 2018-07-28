@@ -3,7 +3,7 @@ import logging
 
 _logger = logging.getLogger(__name__)
 
-STATES = [('open', 'Open'), ('done', 'Done')]
+STATES = [('open', 'Open'), ('approve', 'Approve'), ('reject', 'Reject'), ('done', 'Done')]
 
 
 
@@ -41,6 +41,18 @@ class SavingsTransaction(models.Model):
     @api.one
     def trans_re_open(self):
         self.state = "open" #pindah state ke open
+
+    @api.multi
+    def trans_corection(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'CORECTION FORM FOR APPROVEL OR REJECT',
+            'res_model': 'corection.deposit_withdrawal',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'view_id': self.env.ref('corection_trans_view', False),
+            'target': 'new',
+        }
 
     saving_trans_id = fields.Char(string="Transaction Number", readonly=True )
     date            = fields.Datetime(string="Date", required=True, readonly=True, default=fields.Datetime.now)
@@ -101,12 +113,14 @@ class SavingsList(models.Model):
     def unlink(self):
         pass
 
+
+
 # koreksi setor & tarik
-class Correction(models.Model):
-    _name = 'correction.deposit_withdrawal'
-    _rec_name = 'correction_id'
+class Corection(models.Model):
+    _name = 'corection.deposit_withdrawal'
+    _rec_name = 'corection_id'
     _description = 'Koreksi Setor Tarik'
 
-    correction_id = fields.Char(string="Correction ID", required=True, Readonly=True )
+    corection_id = fields.Char(string="Corection ID", required=True, Readonly=True )
     savings_trans_id = fields.Many2one(comodel_name="savings.trans", string="Transaction ID", required=True, )
     description = fields.Text(string="Description", required=False, )

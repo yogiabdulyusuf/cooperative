@@ -7,18 +7,28 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-
+                <!-- Add Field Inherit res partner -->
+                <xpath expr="/form/*" position="before">
+                    <header>
+                        <field name="states" widget="statusbar" statusbar_visible="draft,in_progress,active,done"/>
+                    </header>
+                </xpath>
                 <xpath expr="//notebook" position="inside">
                     <page string="Membership">
                         <group>
-                            <field name="active_member" />
+                            <field name="active_members" />
                         </group>
                     </page>
                 </xpath>
 
+                <!-- Hide Field Res Partner -->
+                <xpath expr="//field[@name='lang']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
                 <xpath expr="//notebook/page[1]" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+
             </field>
         </record>
 
@@ -28,5 +38,34 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
+        <!-- END MEMBER -->
+
+        <!-- TERMINATION -->
+        <record id="termination_view_form" model="ir.ui.view">
+            <field name="name">Termination Member</field>
+            <field name="model">member.termination</field>
+            <field name="arch" type="xml">
+                <form string="Termination Form">
+                    <sheet>
+                        <group>
+                            <field name="termination_id" readonly="1"/>
+                            <group>
+                                <field name="member_id"/>
+                            </group>
+                            <field name="descrip"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="act_termination" model="ir.actions.act_window">
+            <field name="name">Termination</field>
+            <field name="res_model">member.termination</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+        </record>
+        <!-- END TERMINATION -->
+
+
     </data>
 </odoo>

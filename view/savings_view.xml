@@ -51,8 +51,9 @@
                     <header>
 
                         <button name="trans_close" string="Close" type="object" class="oe_highlight" confirm="Are you sure to close..?" states="open" />
+                        <button name="trans_corection" string="Corection" type="object" class="oe_highlight" states="open" />
                         <button name="trans_re_open" string="Re-Open" type="object" class="oe_highlight" confirm="Are you sure to Re-Open...?" states="done" />
-                        <field name="state" widget="statusbar" statusbar_visible="open,done"/>
+                        <field name="state" widget="statusbar" statusbar_visible="open,approve,reject,done"/>
                     </header>
                     <sheet>
                         <div class="oe_title">
@@ -174,6 +175,73 @@
             </field>
         </record>
 
+        <!-- WIZARD CORECTION FORM -->
+        <record id="corection_trans_view" model="ir.ui.view">
+            <field name="name">Corection Transaction Form</field>
+            <field name="model">corection.deposit_withdrawal</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="savings_trans_form">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="saving_corection_id" class="oe_edit_only" string="Corection ID" />
+                            <h1>
+                                <field name="corection_id" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="savings_trans_id"/>
+
+                            </group>
+                            <field name="description"/>
+                        </group>
+
+                        <footer>
+                            <button string="Cancel" special="cancel" class="oe_highlight"/>
+                            <button name="request_corection" string="Request Corection" type="object" class="oe_highlight" />
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_wizard_corection" model="ir.actions.act_window">
+            <field name="name">Corection</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">corection.deposit_withdrawal</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="corection_trans_view"/>
+            <field name="target">new</field>
+        </record>
+        <!-- END WIZARD CORECTION FORM -->
+
+
+        <!-- CORECTION TREE VIEW -->
+        <record id="corection_tree_view" model="ir.ui.view">
+            <field name="name">Corection Tree</field>
+            <field name="model">corection.deposit_withdrawal</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="corection_tree">
+                    <field name="corection_id"/>
+                    <field name="savings_trans_id"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+        <record id="act_corection_tree" model="ir.actions.act_window">
+            <field name="name">Corection</field>
+            <field name="res_model">corection.deposit_withdrawal</field>
+            <field name="view_type">tree</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="corection_tree_view"/>
+        </record>
+
+        <!-- END CORECTION TREE VIEW -->
+
+
         <!-- DEPOSIT FORM -->
         <record id="act_deposit" model="ir.actions.act_window">
             <field name="name">Savings Deposit Form</field>
@@ -201,6 +269,8 @@
             <field name="view_mode">tree,form</field>
         </record>
         <!-- END TRANSACTION TYPE -->
+
+
 
 
           <!-- SAVINGS ACCOUNT -->
@@ -261,6 +331,8 @@
             <field name="view_mode">tree,form</field>
         </record>
         <!-- END SAVINGS ACCOUNT -->
+
+
 
     </data>
 </odoo>
