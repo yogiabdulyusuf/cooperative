@@ -105,13 +105,13 @@ class SavingsList(models.Model):
     voluntary_savings = fields.Float(string="Voluntary Savings", required=False, )
     mandatory_savings = fields.Float(string="Mandatory Savings",  required=False, )
 
-    @api.multi
-    def write(self, vals):
-        pass
+    #@api.multi
+    #def write(self, vals):
+     #   pass
 
-    @api.multi
-    def unlink(self):
-        pass
+    #@api.multi
+    #def unlink(self):
+     #   pass
 
 
 

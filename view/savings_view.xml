@@ -108,7 +108,7 @@
                                 <field name="account_number"/>
                             </group>
                             <group>
-                                <field name="trans_type_id" options='{"create":False,"create_edit": False,"no_open": True}' />
+                                <field name="trans_type_id" /> <!-- options='{"create":False,"create_edit": False,"no_open": True}' -->
                             </group>
                             <group>
                                 <field name="debit"/>
@@ -298,7 +298,7 @@
                         </group>
 
                         <field name="savings_list">
-                            <tree string="Savings List" create="false" edit="false" delete="false">
+                            <tree string="Savings List" create="True" edit="false" delete="false">
                                 <field name="date" />
                                 <field name="trans_type_id" />
                                 <field name="debit" />
