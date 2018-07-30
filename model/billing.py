@@ -19,4 +19,3 @@ class BillingPerioderLine(models.Model):
     state = fields.Selection([('open','Open'),('done','Close')], 'Status', default='open', readonly=True)
 
 
-

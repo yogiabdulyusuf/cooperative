@@ -2,6 +2,7 @@
 	<!-- This Root Menu -->
 	<menuitem id="cooperative_menu_root" name="Cooperative"/>
 
+
 	<!-- This Menu Group Membership -->
 	<menuitem id="membership_menu_group" parent="cooperative_menu_root" name="Membership" sequence="3"/>
 		<menuitem	id="menu_membership"	name="Membership" parent="membership_menu_group"	action="act_membership" />
@@ -23,4 +24,9 @@
 	<!-- This Menu Group Deposit -->
 	<menuitem id="deposit_menu_group" parent="cooperative_menu_root" name="Deposit" sequence="35"/>
 		<menuitem	id="long_desposit"	name="Long Deposits" parent="deposit_menu_group"	action="act_long_deposit" />
+
+	<!-- This Menu Group Configuration-->
+	<menuitem id="configuration_menu_group" parent="cooperative_menu_root" name="Configuration" sequence="40"/>
+	<menuitem id="billing_menu_group" parent="configuration_menu_group" name="Billing" sequence="1"/>
+		<menuitem	id="menu_billing_periode"	name="Periode" parent="billing_menu_group"	action="act_billing_periode" />
 </odoo>

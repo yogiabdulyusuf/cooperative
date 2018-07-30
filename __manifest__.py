@@ -3,6 +3,8 @@
 	"version": "1.0", 
 	"depends": [
 		"base",
+		"account",
+		"account_voucher",
 	],
 	"author": "jakc-labs",
 	"category": "Cooperative",
@@ -20,6 +22,7 @@ Cooperative
 
 """,
 	"data": [
+		"view/billing_view.xml",
 		"view/membership_view.xml",
 		"view/savings_view.xml",
 		"view/loan_view.xml",

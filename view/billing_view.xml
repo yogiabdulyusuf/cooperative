@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- LONG DEPOSITS -->
+        <record id="view_billing_periode_form" model="ir.ui.view">
+           <field name="name">billing.periode.form</field>
+           <field name="model">billing.periode</field>
+           <field name="arch" type="xml">
+               <form string="Billing Periode">
+                   <sheet>
+                       <group>
+                            <field name="name"/>
+                       </group>
+                       <notebook>
+                           <page string="Lines">
+                               <field name="line_ids">
+                                   <tree>
+                                       <field name="name"/>
+                                       <field name="start_date"/>
+                                       <field name="end_date"/>
+                                       <field name="state"/>
+                                   </tree>
+                               </field>
+                           </page>
+                       </notebook>
+                   </sheet>
+               </form>
+           </field>
+        </record>
+
+        <record id="view_billing_periode_tree" model="ir.ui.view">
+            <field name="name">billing.periode.tree</field>
+            <field name="model">billing.periode</field>
+            <field name="arch" type="xml">
+                <tree string="Billing Periode">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="act_billing.periode" model="ir.actions.act_window">
+            <field name="name">Periode</field>
+            <field name="res_model">billing.periode</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- END LONG DEPOSIT -->
+
+    </data>
+</odoo>
