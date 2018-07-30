@@ -50,11 +50,6 @@ class LoanTransLine(models.Model):
     _name = 'loan.trans.line'
     _description = 'Loan Transaction Line'
 
-    @api.one
-    def get_state(self):
-        for line in self:
-            line.state = 'open'
-
     loan_trans_line_id  = fields.Many2one(comodel_name="loan.trans", string="Loan Trans Line Header", required=True, )
     sequence = fields.Integer('Sequence', readonly=True)
     installment = fields.Char(string="Installment", required=True, )
@@ -64,3 +59,7 @@ class LoanTransLine(models.Model):
     state = fields.Selection(string="", selection=[('open', 'Open'), ('done', 'Done'), ], compute='get_state', required=True)
     loan_invoice_ids = fields.One2many('account.invoice','loan_trans_line_id', 'Invoices', readonly=True)
 
+    @api.one
+        def get_state(self):
+            for line in self:
+                line.state = 'open'
