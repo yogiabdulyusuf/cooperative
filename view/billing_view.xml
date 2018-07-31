@@ -38,7 +38,7 @@
             </field>
         </record>
 
-        <record id="act_billing.periode" model="ir.actions.act_window">
+        <record id="act_billing_periode" model="ir.actions.act_window">
             <field name="name">Periode</field>
             <field name="res_model">billing.periode</field>
             <field name="view_type">form</field>
