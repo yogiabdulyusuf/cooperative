@@ -10,7 +10,7 @@
                 <!-- Add Field Inherit res partner -->
                 <xpath expr="/form/*" position="before">
                     <header>
-                        <field name="states" widget="statusbar" statusbar_visible="draft,in_progress,active,done"/>
+                        <field name="states_member" widget="statusbar" statusbar_visible="draft,in_progress,active,done"/>
                     </header>
                 </xpath>
                 <xpath expr="//notebook" position="inside">

@@ -36,8 +36,8 @@ class LoanTrans(models.Model):
     date_loan_trans = fields.Datetime(string="Date", required=True, readonly="True", default=fields.Datetime.now)
     estimate_start_date = fields.Date(string="Estimate Start Date", required=True, )
     quantity = fields.Float(string="Quantity",  required=True, )
-    state = fields.Selection(string="", selection=STATES, required=True, default='draft' )
-    loan_trans_line = fields.One2many(comodel_name="loan.trans_line", inverse_name="loan_trans_line_id", string="Loan Trans Line", )
+    state = fields.Selection(string="State", selection=STATES, required=True, default='draft' )
+    loan_trans_line = fields.One2many(comodel_name="loan.trans.line", inverse_name="trans_line_id", string="Loan Trans Line", )
 
     @api.model
     def create(self, vals):
@@ -50,16 +50,16 @@ class LoanTransLine(models.Model):
     _name = 'loan.trans.line'
     _description = 'Loan Transaction Line'
 
-    loan_trans_line_id  = fields.Many2one(comodel_name="loan.trans", string="Loan Trans Line Header", required=True, )
+    trans_line_id  = fields.Many2one(comodel_name="loan.trans", string="Loan Trans Line Header", )
     sequence = fields.Integer('Sequence', readonly=True)
     installment = fields.Char(string="Installment", required=True, )
     billing_periode_line_id = fields.Many2one('billing.periode.line', 'Periode Line #', readonly=True)
     due_date = fields.Date(string="Due Date", required=True, )
     amount = fields.Float(string="Amount",  required=True, )
-    state = fields.Selection(string="", selection=[('open', 'Open'), ('done', 'Done'), ], compute='get_state', required=True)
-    loan_invoice_ids = fields.One2many('account.invoice','loan_trans_line_id', 'Invoices', readonly=True)
+    state = fields.Selection(string="State", selection=[('open', 'Open'), ('done', 'Done'), ], compute='get_state', required=True)
+    #loan_invoice_ids = fields.One2many('account.invoice','trans_line_id', 'Invoices', readonly=True)
 
     @api.one
-        def get_state(self):
-            for line in self:
-                line.state = 'open'
+    def get_state(self):
+        for line in self:
+            line.state = 'open'
