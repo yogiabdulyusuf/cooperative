@@ -10,6 +10,7 @@
                 <!-- Add Field Inherit res partner -->
                 <xpath expr="/form/*" position="before">
                     <header>
+                        <button name="btn_confirm" string="Confirm" type="object" class="oe_highlight" confirm="Are you sure to confirm add member and create saving account..?" states="draft" />
                         <field name="states_member" widget="statusbar" statusbar_visible="draft,in_progress,active,done"/>
                     </header>
                 </xpath>
