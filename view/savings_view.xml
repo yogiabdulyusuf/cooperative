@@ -272,6 +272,7 @@
 
 
 
+
           <!-- SAVINGS ACCOUNT -->
         <record id="savings_account_form_view" model="ir.ui.view">
             <field name="name">Savings Account Form</field>

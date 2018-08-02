@@ -1,6 +1,6 @@
 {
 	"name": "Cooperative",
-	"version": "1.0", 
+	"version": "10.0.1.0",
 	"depends": [
 		"base",
 		"account",
@@ -14,11 +14,14 @@
 Cooperative
 ======================================================================
 
-* this is my Cooperative system module
-* created menu:
-* created object
-* created views
-* logic:
+* Membership Module
+* Saving Module
+* Loan Module
+* Billing Module
+* Accounting
+* Sales
+* Purchase
+* Warehouse
 
 """,
 	"data": [
