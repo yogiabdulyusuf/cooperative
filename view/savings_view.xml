@@ -108,7 +108,7 @@
                                 <field name="account_number"/>
                             </group>
                             <group>
-                                <field name="trans_type_id" /> <!-- options='{"create":False,"create_edit": False,"no_open": True}' -->
+                                <field name="trans_type_id" options='{"create":False,"create_edit": False,"no_open": True}' /> <!--  -->
                             </group>
                             <group>
                                 <field name="debit"/>
