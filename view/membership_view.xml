@@ -37,6 +37,8 @@
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
+            <field name="domain">[('active_members','=',True)]</field>
+            <field name="context">{'default_active_members': True}</field>
         </record>
         <!-- END MEMBER -->
 
@@ -58,6 +60,7 @@
                 </form>
             </field>
         </record>
+
         <record id="act_termination" model="ir.actions.act_window">
             <field name="name">Termination</field>
             <field name="res_model">member.termination</field>

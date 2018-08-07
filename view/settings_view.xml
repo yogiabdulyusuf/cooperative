@@ -15,6 +15,9 @@
                         <group>
                             <field name="principal_savings" />
                             <field name="mandatory_savings" />
+                            <field name="principal_savings_trans_type_id" />
+                            <field name="mandatory_savings_trans_type_id" />
+
                         </group>
                     </page>
 
