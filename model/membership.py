@@ -32,6 +32,7 @@ class Membership(models.Model):
             saving_trans = savings_trans_obj.create(vals)
             if not saving_trans:
                 raise ValidationError("Error Creating Simpanan Pokok")
+
             # Generate Transaksi Simpanan Wajib
             mandatory_savings = self.env.user.company_id.mandatory_savings_trans_type_id
             if not mandatory_savings:

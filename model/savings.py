@@ -89,8 +89,9 @@ class SavingsTransaction(models.Model):
 
     saving_trans_id = fields.Char(string="Transaction Number", readonly=True )
     date            = fields.Datetime(string="Date", required=True, readonly=True, default=fields.Datetime.now)
-    trans_type_id   = fields.Many2one(comodel_name="transaction.type", string="Transaction Type", )
-    account_number  = fields.Many2one("savings.account", "Savings Account", )
+    trans_type_id   = fields.Many2one(comodel_name="transaction.type", string="Transaction Type", required=True )
+    account_number  = fields.Many2one("savings.account", "Savings Account", required=True)
+    saving_method = fields.Selection(string="Saving Method", selection=[('deposit', 'Deposit'), ('withdrawal', 'Withdrawal'), ], readonly=True )
     debit           = fields.Float(string="Debit",  default=0.0)
     credit          = fields.Float(string="Credit",  default=0.0)
     state           = fields.Selection(string="", selection=STATES, required=True, compute='get_state', default='open')

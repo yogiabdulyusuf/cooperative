@@ -9,10 +9,10 @@
 		<menuitem	id="menu_termination"	name="Termination" parent="membership_menu_group"	action="act_termination" />
 
 	<!-- This Menu Group Savings -->
-	<menuitem id="savings_menu_group" parent="cooperative_menu_root" name="Savings" sequence="8"/>
+	<menuitem id="savings_menu_group" parent="cooperative_menu_root" name="Savings" sequence="10"/>
 		<menuitem	id="type_savings_transaction"	name="Transaction Type" parent="savings_menu_group"	action="act_transaction_type" />
-		<menuitem	id="savings_deposit"	name="Deposit" parent="savings_menu_group"	action="act_deposit" />
-		<menuitem	id="savings_withdrawal"	name="Withdrawal" parent="savings_menu_group"	action="act_withdrawal" />
+		<menuitem	id="savings_deposit"	name="Deposit" parent="savings_menu_group"	action="act_deposit_view" />
+		<menuitem	id="savings_withdrawal"	name="Withdrawal" parent="savings_menu_group"	action="act_withdrawal_view" />
 		<menuitem	id="savings_transaction"	name="Savings Transaction" parent="savings_menu_group"	action="act_saving_trans" />
 		<menuitem	id="savings_account"	name="Savings Account" parent="savings_menu_group"	action="act_saving_account" />
 		<menuitem	id="corection"	name="Corection" parent="savings_menu_group"	action="act_corection_tree" />
