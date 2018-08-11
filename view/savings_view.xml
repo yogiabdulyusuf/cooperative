@@ -48,11 +48,11 @@
             <field name="arch" type="xml">
                 <form string="savings_trans_form">
                     <header>
-
+                        <button name="trans_open" string="Open" type="object" class="oe_highlight" states="new" />
                         <button name="trans_close" string="Close" type="object" class="oe_highlight" confirm="Are you sure to close..?" states="open" />
                         <button name="trans_corection" string="Corection" type="object" class="oe_highlight" states="open" />
-                        <button name="trans_re_open" string="Re-Open" type="object" class="oe_highlight" confirm="Are you sure to Re-Open...?" states="done" />
-                        <field name="state" widget="statusbar" statusbar_visible="open,approve,reject,done"/>
+                        <button name="trans_re_open" string="Re-Open" type="object" class="oe_highlight" confirm="Are you sure to Re-Open...?" states="post" />
+                        <field name="state" widget="statusbar" statusbar_visible="new,open,paid,post"/>
                     </header>
                     <sheet>
                         <div class="oe_title">
