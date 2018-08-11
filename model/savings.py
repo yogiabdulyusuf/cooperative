@@ -3,7 +3,7 @@ import logging
 
 _logger = logging.getLogger(__name__)
 
-STATES = [('open', 'Open'), ('approve', 'Approve'), ('reject', 'Reject'), ('done', 'Done')]
+STATES = [('new', 'New'), ('open', 'Open'), ('paid', 'Paid'), ('post', 'Post')]
 
 
 
@@ -56,10 +56,13 @@ class SavingsTransaction(models.Model):
     _rec_name = 'saving_trans_id'
     _description = 'Savings Transaction'
 
+    @api.one
+    def trans_open(self):
+        self.state = "open"  # pindah state ke open
 
     @api.one
     def trans_close(self):
-        self.state="done"
+        self.state="post"
 
     @api.one
     def trans_re_open(self):
@@ -82,10 +85,6 @@ class SavingsTransaction(models.Model):
         vals['saving_trans_id'] = self.env['ir.sequence'].next_by_code('savings.trans')
         return super(SavingsTransaction, self).create(vals)
 
-    @api.one
-    def get_state(self):
-        for line in self:
-            line.state = 'open'
 
     saving_trans_id = fields.Char(string="Transaction Number", readonly=True )
     date            = fields.Datetime(string="Date", required=True, readonly=True, default=fields.Datetime.now)
@@ -94,7 +93,7 @@ class SavingsTransaction(models.Model):
     saving_method = fields.Selection(string="Saving Method", selection=[('deposit', 'Deposit'), ('withdrawal', 'Withdrawal'), ], readonly=True )
     debit           = fields.Float(string="Debit",  default=0.0)
     credit          = fields.Float(string="Credit",  default=0.0)
-    state           = fields.Selection(string="", selection=STATES, required=True, compute='get_state', default='open')
+    state           = fields.Selection(string="", selection=STATES, required=True, default='new')
 
 # koreksi setor & tarik
 class Corection(models.Model):
