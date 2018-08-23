@@ -34,10 +34,18 @@ class LoanTrans(models.Model):
 
 
     @api.one
+    def trans_request(self):
+        self.state = 'request'
+
+    @api.one
+    def trans_review(self):
+        self.state = 'review'
+
+    @api.one
     def trans_generate_line(self):
         loan_trans_line_obj = self.env['loan.trans.line']
         installment_amount = self.amount / self.installment_number
-        interest_amount = (self.amount * self.loan_type_id.interest_percentage) / 12
+        interest_amount = (self.amount * self.loan_type_id.interest_percentage * 0.01) / 12
         installment_total = installment_amount + interest_amount
         for i in range(self.installment_number):
             vals = {}
@@ -49,7 +57,6 @@ class LoanTrans(models.Model):
             vals.update({'interest_amount': interest_amount})
             vals.update({'installment_total': installment_total})
             loan_trans_line_obj.create(vals)
-
 
     trans_number = fields.Char(string="Transaction Number", readonly=True)
     member_id = fields.Many2one('res.partner','Member', domain=[('active_members','=', True)],required=True)
@@ -77,7 +84,18 @@ class LoanTransLine(models.Model):
     @api.one
     def get_state(self):
         for line in self:
-            line.state = 'open'
+            if line.loan_trans_id.state == 'draft':
+                line.state = 'draft'
+            if line.loan_trans_id.state == 'request':
+                line.state = 'request'
+            if line.loan_trans_id.state == 'review':
+                line.state = 'review'
+            if line.loan_trans_id.state == 'approve':
+                line.state = 'approve'
+            if line.loan_trans_id.state == 'reject':
+                line.state = 'reject'
+            if line.loan_trans_id.state == 'done':
+                line.state = 'done'
 
     loan_trans_id  = fields.Many2one("loan.trans", "Loan Trans Line Header", ondelete="cascade")
     sequence = fields.Integer('Sequence', readonly=True)
@@ -86,6 +104,10 @@ class LoanTransLine(models.Model):
     installment_amount = fields.Float(string="Installment Amount",  required=True, default=0.0)
     interest_amount = fields.Float('Interest Amount', required=True, default=0.0)
     installment_total = fields.Float('Total Amount', required=True, default=0.0)
+    iface_request_review = fields.Boolean('Review', default=False, readonly=True)
+    date_request_review = fields.Datetime('Review Date', readony=True)
+    iface_request_approval = fields.Boolean('Approval', default=False, readonly=True)
+    date_request_approval = fields.Datetime('Approval Date', readony=True)
     loan_invoice_ids = fields.One2many('account.invoice','loan_trans_line_id', 'Invoices', readonly=True)
-    state = fields.Selection(string="", selection=[('open', 'Open'), ('done', 'Done'), ], compute='get_state', required=True)
+    state = fields.Selection(STATES, "Status", compute='get_state', required=True)
 
