@@ -14,6 +14,7 @@
 		<menuitem	id="savings_deposit"	name="Deposit" parent="savings_menu_group"	action="act_deposit_view" />
 		<menuitem	id="savings_withdrawal"	name="Withdrawal" parent="savings_menu_group"	action="act_withdrawal_view" />
 		<menuitem	id="savings_transaction"	name="Savings Transaction" parent="savings_menu_group"	action="act_saving_trans" />
+		<menuitem	id="end_of_day"	name="End Of Day" parent="savings_menu_group"	action="act_endofday" />
 		<menuitem	id="savings_account"	name="Savings Account" parent="savings_menu_group"	action="act_saving_account" />
 		<menuitem	id="corection"	name="Corection" parent="savings_menu_group"	action="act_corection_tree" />
 	<!-- This Menu Group Savings -->

@@ -49,7 +49,7 @@
                 <form string="savings_trans_form">
                     <header>
                         <button name="trans_open" string="Open" type="object" class="oe_highlight" states="new" />
-                        <button name="trans_close" string="Close" type="object" class="oe_highlight" confirm="Are you sure to close..?" states="open" />
+                        <button name="trans_paid" string="Paid" type="object" class="oe_highlight" confirm="has the customer paid?" states="open" />
                         <button name="trans_corection" string="Corection" type="object" class="oe_highlight" states="open" />
                         <button name="trans_re_open" string="Re-Open" type="object" class="oe_highlight" confirm="Are you sure to Re-Open...?" states="post" />
                         <field name="state" widget="statusbar" statusbar_visible="new,open,paid,post"/>
@@ -64,7 +64,7 @@
                         <group>
                             <group>
                                 <field name="date"/>
-                                <field name="account_number"/>
+                                <field name="account_number_id"/>
                             </group>
                             <group>
                                 <field name="trans_type_id" options='{"create":False,"create_edit": False,"no_open": True}' />
@@ -83,48 +83,6 @@
             </field>
         </record>
 
-
-        <!-- <record id="debit_credit_view" model="ir.ui.view">
-            <field name="name">Savings Transaction Form</field>
-            <field name="model">savings.trans</field>
-            <field name="arch" type="xml">
-                <form string="savings_trans_form">
-                    <header>
-
-                        <button name="trans_close" string="Close" type="object" class="oe_highlight" confirm="Are you sure to close..?" states="open" />
-                        <button name="trans_re_open" string="Re-Open" type="object" class="oe_highlight" confirm="Are you sure to Re-Open...?" states="done" />
-                        <field name="state" widget="statusbar" statusbar_visible="open,done"/>
-                    </header>
-                    <sheet>
-                        <div class="oe_title">
-                            <label for="saving_trans_id" class="oe_edit_only" string="Transaction Number" />
-                            <h1>
-                                <field name="saving_trans_id"/>
-                            </h1>
-                        </div>
-                        <group>
-                            <group>
-                                <field name="date"/>
-                                <field name="account_number"/>
-                            </group>
-                            <group>
-                                <field name="trans_type_id" options='{"create":False,"create_edit": False,"no_open": True}' />
-                            </group>
-                            <group>
-                                <field name="check" readonly='True' />
-                            </group>
-                                <field name="debit" attrs="{'invisible': [('check','!=','true')]}"/>
-                            </group>
-                            <group>
-                                <field name="credit" attrs="{'invisible': [('check','!=','false')]}"/>
-                            </group>
-
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
--->
 
         <!-- DEPOSIT FORM -->
         <record id="act_deposit_view" model="ir.actions.act_window">
@@ -156,7 +114,7 @@
                 <tree string="savings_trans_tree">
                     <field name="saving_trans_id"/>
                     <field name="date"/>
-                    <field name="account_number"/>
+                    <field name="account_number_id"/>
                 </tree>
             </field>
         </record>
@@ -260,14 +218,13 @@
                             </group>
                         </group>
 
-                        <field name="savings_list">
-                            <tree string="Savings List" create="True" edit="false" delete="false">
-                                <field name="date" />
-                                <field name="trans_type_id" />
-                                <field name="debit" />
-                                <field name="credit" />
-                                <field name="state" />
-
+                        <field name="savings_list_id">
+                            <tree string="Savings List" create="true" edit="false" delete="false">
+                                <field name="date"/>
+                                <field name="trans_type_id"/>
+                                <field name="debit"/>
+                                <field name="credit"/>
+                                <field name="state"/>
                             </tree>
                         </field>
                     </sheet>
@@ -281,7 +238,7 @@
             <field name="arch" type="xml">
                 <tree string="savings_account_tree">
                     <field name="account_number"/>
-                    <field name="name" />
+                    <field name="name"/>
                     <field name="interest"/>
                 </tree>
             </field>
@@ -296,6 +253,55 @@
         <!-- END SAVINGS ACCOUNT -->
 
 
+        <!-- END OF DAY -->
+        <record id="endofday_form_view" model="ir.ui.view">
+            <field name="name">End Of Day Form</field>
+            <field name="model">end.of.day</field>
+            <field name="arch" type="xml">
+                <form string="end_of_day_form">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="date_jurnal" />
+                                <field name="balance"/>
+                            </group>
+
+                            <group>
+                                <field name="date_posted" />
+                            </group>
+                        </group>
+
+                        <field name="savings_list_id">
+                            <tree string="Savings List" create="true" edit="false" delete="false">
+                                <field name="date" />
+                                <field name="trans_type_id" />
+                                <field name="debit" />
+                                <field name="credit" />
+                                <field name="state" />
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="endofday_tree_view" model="ir.ui.view">
+            <field name="name">End Of Day Tree</field>
+            <field name="model">end.of.day</field>
+            <field name="arch" type="xml">
+                <tree string="endofday_tree">
+                    <field name="date_jurnal"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="act_endofday" model="ir.actions.act_window">
+            <field name="name">End Of Day</field>
+            <field name="res_model">end.of.day</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- END OF DAY -->
 
     </data>
 </odoo>

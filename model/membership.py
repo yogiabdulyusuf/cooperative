@@ -22,11 +22,12 @@ class Membership(models.Model):
             #Generate Transaksi Simpanan Pokok
             savings_trans_obj = self.env['savings.trans']
             vals = {}
-            vals.update({'account_number': savings_account.id})
+            vals.update({'account_number_id': savings_account.id})
             principal_savings = self.env.user.company_id.principal_savings_trans_type_id
             if not principal_savings:
                 raise ValidationError("Pricinpal Savings not defined,  please define on company information!")
             vals.update({'debit': self.env.user.company_id.principal_savings})
+            vals.update({'saving_method' : 'deposit'})
             vals.update({'credit': 0.0})
             vals.update({'trans_type_id':principal_savings.id})
             saving_trans = savings_trans_obj.create(vals)
@@ -38,8 +39,9 @@ class Membership(models.Model):
             if not mandatory_savings:
                 raise ValidationError("Mandatory Savings not defined, please define on company information!")
             vals = {}
-            vals.update({'account_number': savings_account.id})
+            vals.update({'account_number_id': savings_account.id})
             vals.update({'debit': self.env.user.company_id.mandatory_savings})
+            vals.update({'saving_method': 'deposit'})
             vals.update({'credit': 0.0})
             vals.update({'trans_type_id': mandatory_savings.id})
             saving_trans = savings_trans_obj.create(vals)
@@ -48,31 +50,6 @@ class Membership(models.Model):
         else:
             raise ValidationError("Error Creating Saving Account")
 
-        #for s in range(2):
-        #    if s == 0:
-        #        savings_account_obj = self.env['savings.account']
-        #        vals = {}
-        #        #vals.update({'account_number': account_number_obj})
-        #        vals.update({'interest': 'flat'})
-        #        vals.update({'name': self.id})
-        #        savings_account_obj.create(vals)
-        #    else:
-        #        # GENERATE TRANS
-        #        savings_trans_obj = self.env['savings.trans']
-        #       # val_account = self.env['savings.account'].search({('account_number', '=', account_number_obj)})
-        #        credit_val = 0
-        #
-        #        for i in range(2):
-        #            if i == 0:
-        #                debit_val = 300000
-        #            else:
-        #                debit_val = 50000
-        #
-        #            vals = {}
-        #            #vals.update({'account_number': self.val_account.id})
-        #            vals.update({'debit': debit_val})
-        #            vals.update({'credit': credit_val})
-        #            savings_trans_obj.create(vals)
 
     @api.model
     def create(self, vals):
