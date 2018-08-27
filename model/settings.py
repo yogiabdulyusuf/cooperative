@@ -8,4 +8,5 @@ class Settings(models.Model):
     mandatory_savings = fields.Float(string="Mandatory Savings", required=False, )
     principal_savings_trans_type_id = fields.Many2one('transaction.type', 'PS Transaction Type')
     mandatory_savings_trans_type_id = fields.Many2one('transaction.type', 'MS Transaction Type')
+    account_company_id = fields.Many2one('savings.account', 'Account Company')
 

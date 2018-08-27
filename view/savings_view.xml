@@ -71,6 +71,7 @@
                                 <field name="saving_method" />
                             </group>
                             <group>
+                                <field name="endofday_id" />
                                 <field name="debit" attrs="{'invisible': [('saving_method','!=','deposit')]}"/>
                             </group>
                             <group>
@@ -115,6 +116,7 @@
                     <field name="saving_trans_id"/>
                     <field name="date"/>
                     <field name="account_number_id"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
@@ -259,22 +261,26 @@
             <field name="model">end.of.day</field>
             <field name="arch" type="xml">
                 <form string="end_of_day_form">
+
+                    <header>
+                        <button name="trans_post" string="Post" type="object" class="oe_highlight" confirm="Are you sure to Post...?" states="new" />
+                        <field name="state" widget="statusbar" statusbar_visible="new,post"/>
+                    </header>
                     <sheet>
                         <group>
                             <group>
-                                <field name="date_jurnal" />
+                                <field name="endofday"/>
+                                <field name="date_endofday" />
                                 <field name="balance"/>
                             </group>
 
-                            <group>
-                                <field name="date_posted" />
-                            </group>
                         </group>
 
                         <field name="savings_list_id">
                             <tree string="Savings List" create="true" edit="false" delete="false">
                                 <field name="date" />
                                 <field name="trans_type_id" />
+                                <field name="account_number_id" />
                                 <field name="debit" />
                                 <field name="credit" />
                                 <field name="state" />
@@ -290,7 +296,7 @@
             <field name="model">end.of.day</field>
             <field name="arch" type="xml">
                 <tree string="endofday_tree">
-                    <field name="date_jurnal"/>
+                    <field name="date_endofday"/>
                 </tree>
             </field>
         </record>

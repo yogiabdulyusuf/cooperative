@@ -1,4 +1,6 @@
 from odoo import api, fields, models
+from datetime import datetime, timedelta
+from odoo.exceptions import ValidationError, Warning
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -87,9 +89,10 @@ class SavingsTransaction(models.Model):
 
 
     saving_trans_id = fields.Char(string="Transaction Number", readonly=True )
-    date            = fields.Datetime(string="Date Paid", required=True, readonly=True, default=fields.Datetime.now)
+    date            = fields.Date(string="Date Paid", required=True, readonly=True, default=fields.Date.today())
     trans_type_id   = fields.Many2one(comodel_name="transaction.type", string="Transaction Type", required=True )
     account_number_id  = fields.Many2one("savings.account", "Savings Account", required=True)
+    endofday_id     = fields.Many2one("end.of.day", "End Of Day ID", )
     saving_method = fields.Selection(string="Saving Method", selection=[('deposit', 'Deposit'), ('withdrawal', 'Withdrawal'), ], readonly=True )
     debit           = fields.Float(string="Debit",  default=0.0)
     credit          = fields.Float(string="Credit",  default=0.0)
@@ -108,39 +111,32 @@ class Corection(models.Model):
 
 class EndOfDay(models.Model):
     _name = 'end.of.day'
+    _rec_name = 'endofday'
     _description = 'End OF Day'
 
     @api.one
-    def generate_jurnal(self):
-        saving_trans_obj = self.env['savings.trans']
-        args = [('date', '=', date_jurnal.id)]
-        savings_account_ids = saving_trans_obj.search(args)
-        if len(savings_account_ids) > 0:
+    def trans_post(self):
 
-        jurnal_obj = self.env['list.endofday']
-        vals = {}
-        vals.update({'saving_method': 'flat'})
-        vals.update({'endofday_id': self.id})
-        vals.update({'debit': 'flat'})
-        vals.update({'credit': 'flat'})
-        vals.update({'state': 'flat'})
-        val_jurnal = jurnal_obj.create(vals)
+        self.state = "post"
 
-        if val_jurnal:
+    @api.one
+    def generate_saving_trans(self):
+        for row in self:
+            args = [('date', '=', row.date_endofday)]
+            res = self.env['savings.trans'].search(args).write({'endofday_id': row.id})
 
-
-
-        else:
-            raise ValidationError("Error Creating Saving Account")
-
+    endofday = fields.Char(string="End Of Day ID", readonly=True)
+    date_endofday = fields.Date(string="Date End Of Day", required=True, )
+    balance = fields.Float(string="Balance", compute='calculate_total_balance', readonly=True)
+    savings_list_id = fields.One2many(comodel_name="savings.trans", inverse_name="endofday_id", string="Saving Trans ID")
+    state = fields.Selection(string="State", selection=[('new', 'New'), ('post', 'Post'), ], default='new', required=True,)
 
     @api.model
-    def create(self, vals):
-        res = super(EndOfDay, self).create(vals)
-        res.generate_jurnal()
+    def create(self, vals):                                     # Di jalankan ketika Create data baru , sedangkan write(self, vals) dijalankan ketika edit data
+        vals['endofday'] = self.env['ir.sequence'].next_by_code('end.of.day')
+        res  = super(EndOfDay, self).create(vals)
+        res.generate_saving_trans()                             # Menjalankan generate_saving_trans()
         return res
-
-    savings_account_ids.state = 'Active'
 
     @api.one
     def calculate_total_balance(self):
@@ -148,24 +144,3 @@ class EndOfDay(models.Model):
         for data_detail in self.savings_list_id:
             total = total + (data_detail.debit - data_detail.credit)
         self.balance = total
-
-    @api.model
-    def create(self, vals):
-        vals['jurnal_id'] = self.env['ir.sequence'].next_by_code('end.of.day')
-        return super(EndOfDay, self).create(vals)
-
-    jurnal_id = fields.Char(string="Jurnal ID", readonly=True )
-    date_jurnal = fields.Datetime(string="Date Jurnal", required=True, )
-    balance = fields.Float(string="Balance", compute='calculate_total_balance', readonly=True)
-    savings_list_id = fields.One2many(comodel_name="list.endofday", inverse_name="endofday_id", string="Transactions")
-
-class ListEndOfDay(models.Model):
-    _name = 'list.endofday'
-    _description = 'List End OF Day'
-
-    date_posted = fields.Datetime(string="Date Posted", readonly=True)
-    saving_method = fields.Selection(string="Saving Method", selection=[('deposit', 'Deposit'), ('withdrawal', 'Withdrawal'), ], readonly=True)
-    endofday_id = fields.Many2one("end.of.day", "End Of Day ID", required=True)
-    debit = fields.Float(string="Debit", default=0.0)
-    credit = fields.Float(string="Credit", default=0.0)
-    state = fields.Selection(string="", selection=STATES, required=True, default='new')
