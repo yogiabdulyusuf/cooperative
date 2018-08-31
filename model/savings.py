@@ -115,9 +115,68 @@ class EndOfDay(models.Model):
     _description = 'End OF Day'
 
     @api.one
-    def trans_post(self):
+    def calculate_total_balance(self):
+        total = 0
+        for data_detail in self.savings_list_id:
+            total = total + (data_detail.debit - data_detail.credit)
+        self.balance = total
 
-        self.state = "post"
+    @api.one
+    def generate_trans_post_jurnal(self):
+        jurnal_entrie_obj = self.env['account.move']
+        label = 'EOD' + self.date_endofday
+
+        jurnal_endofday = self.env.user.company_id.jurnal_endofday_id
+        if not jurnal_endofday:
+            raise ValidationError("Jurnal End Of Day not defined,  please define on company information!")
+
+        account_company = self.env.user.company_id.account_company_id
+        if not account_company:
+            raise ValidationError("Account Company not defined,  please define on company information!")
+
+        account_cash = self.env.user.company_id.account_cash_id
+        if not account_cash:
+            raise ValidationError("Account Cash not defined,  please define on company information!")
+
+        vals = {}
+        vals.update({'journal_id': jurnal_endofday.id})
+        vals.update({'date': self.date_endofday})
+        vals.update({'line_ids': [(0, 0,{
+            'move_id': self.id,
+            'account_id': account_company.id,
+            'name': label,
+            'debit': 0.0,
+            'quantity': 0.0,
+            'credit': self.balance,
+            'date_maturity': self.date_endofday,
+        }), (0, 0, {
+            'move_id': self.id,
+            'account_id': account_cash.id,
+            'name': label,
+            'debit': self.balance,
+            'quantity': 0.0,
+            'credit': 0.0,
+            'date_maturity': self.date_endofday,
+        })] })
+
+        jurnal_entrie = jurnal_entrie_obj.create(vals)
+
+        if not jurnal_entrie:
+            raise ValidationError("Error Creating Jurnal")
+
+        for row in self:
+            args = [('date', '=', row.date_endofday)]
+            res = self.env['savings.trans'].search(args).write({'state': 'posted'})
+
+
+    @api.one
+    def trans_post(self):
+        self.generate_trans_post_jurnal()
+        self.state = "posted"
+
+    @api.one
+    def trans_re_open(self):
+        self.state = "new"  # pindah state ke new
 
     @api.one
     def generate_saving_trans(self):
@@ -125,22 +184,15 @@ class EndOfDay(models.Model):
             args = [('date', '=', row.date_endofday)]
             res = self.env['savings.trans'].search(args).write({'endofday_id': row.id})
 
-    endofday = fields.Char(string="End Of Day ID", readonly=True)
-    date_endofday = fields.Date(string="Date End Of Day", required=True, )
-    balance = fields.Float(string="Balance", compute='calculate_total_balance', readonly=True)
-    savings_list_id = fields.One2many(comodel_name="savings.trans", inverse_name="endofday_id", string="Saving Trans ID")
-    state = fields.Selection(string="State", selection=[('new', 'New'), ('post', 'Post'), ], default='new', required=True,)
-
     @api.model
-    def create(self, vals):                                     # Di jalankan ketika Create data baru , sedangkan write(self, vals) dijalankan ketika edit data
+    def create(self, vals):                                                     # Di jalankan ketika Create data baru , sedangkan write(self, vals) dijalankan ketika edit data
         vals['endofday'] = self.env['ir.sequence'].next_by_code('end.of.day')
-        res  = super(EndOfDay, self).create(vals)
-        res.generate_saving_trans()                             # Menjalankan generate_saving_trans()
+        res = super(EndOfDay, self).create(vals)                                # Super berfungsi memanggil model ketika eksekusi create
+        res.generate_saving_trans()                                             # Menjalankan generate_saving_trans()
         return res
 
-    @api.one
-    def calculate_total_balance(self):
-        total = 0
-        for data_detail in self.savings_list_id:
-            total = total + (data_detail.debit - data_detail.credit)
-        self.balance = total
+    endofday = fields.Char(string="End Of Day ID", readonly=True)
+    date_endofday = fields.Date(string="Date End Of Day", )
+    balance = fields.Float(string="Balance", compute='calculate_total_balance', readonly=True)
+    savings_list_id = fields.One2many(comodel_name="savings.trans", inverse_name="endofday_id", string="Saving Trans ID")
+    state = fields.Selection(string="State", selection=[('new', 'New'), ('posted', 'Posted'), ], default='new', required=True,)

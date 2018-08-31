@@ -51,8 +51,8 @@
                         <button name="trans_open" string="Open" type="object" class="oe_highlight" states="new" />
                         <button name="trans_paid" string="Paid" type="object" class="oe_highlight" confirm="has the customer paid?" states="open" />
                         <button name="trans_corection" string="Corection" type="object" class="oe_highlight" states="open" />
-                        <button name="trans_re_open" string="Re-Open" type="object" class="oe_highlight" confirm="Are you sure to Re-Open...?" states="post" />
-                        <field name="state" widget="statusbar" statusbar_visible="new,open,paid,post"/>
+                        <button name="trans_re_open" string="Re-Open" type="object" class="oe_highlight" confirm="Are you sure to Re-Open...?" states="posted" />
+                        <field name="state" widget="statusbar" statusbar_visible="new,open,paid,posted"/>
                     </header>
                     <sheet>
                         <div class="oe_title">
@@ -263,8 +263,9 @@
                 <form string="end_of_day_form">
 
                     <header>
-                        <button name="trans_post" string="Post" type="object" class="oe_highlight" confirm="Are you sure to Post...?" states="new" />
-                        <field name="state" widget="statusbar" statusbar_visible="new,post"/>
+                        <button name="trans_re_open" string="Re-Open" type="object" class="oe_highlight" confirm="Are you sure to Re-Open...?" states="posted" />
+                        <button name="trans_post" string="Posted" type="object" class="oe_highlight" confirm="Are you sure you have checked the cash income, which is the same as the one on the end of day?" states="new" />
+                        <field name="state" widget="statusbar" statusbar_visible="new,posted"/>
                     </header>
                     <sheet>
                         <group>

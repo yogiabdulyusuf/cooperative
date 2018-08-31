@@ -13,11 +13,21 @@
                    <!-- Add your fields or attributes here -->
                    <page string="Settings">
                         <group>
-                            <field name="principal_savings" />
-                            <field name="mandatory_savings" />
-                            <field name="principal_savings_trans_type_id" />
-                            <field name="mandatory_savings_trans_type_id" />
-
+                            <group>
+                                <field name="principal_savings" />
+                                <field name="mandatory_savings" />
+                            </group>
+                            <group>
+                                <field name="principal_savings_trans_type_id" />
+                                <field name="mandatory_savings_trans_type_id" />
+                            </group>
+                            <group>
+                                <field name="account_company_id" />
+                                <field name="account_cash_id"/>
+                            </group>
+                            <group>
+                                <field name="jurnal_endofday_id" />
+                            </group>
                         </group>
                     </page>
 
@@ -25,7 +35,5 @@
 
            </field>
        </record>
-
-
     </data>
 </odoo>
