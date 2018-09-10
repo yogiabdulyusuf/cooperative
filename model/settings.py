@@ -8,7 +8,7 @@ class Settings(models.Model):
     mandatory_savings = fields.Float(string="Mandatory Savings", required=False, )
     principal_savings_trans_type_id = fields.Many2one('transaction.type', 'PS Transaction Type')
     mandatory_savings_trans_type_id = fields.Many2one('transaction.type', 'MS Transaction Type')
-    account_company_id = fields.Many2one('account.account', 'Account Company')
+    account_company_id = fields.Many2one('account.account', 'Saving Account')
     account_cash_id = fields.Many2one('account.account', 'Account Cash')
-    jurnal_endofday_id = fields.Many2one('account.journal', 'Journal End Of Day')
+    jurnal_endofday_id = fields.Many2one('account.journal', 'EOD Journal')
 

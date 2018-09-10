@@ -92,7 +92,7 @@ class SavingsTransaction(models.Model):
     date            = fields.Date(string="Date Paid", required=True, readonly=True, default=fields.Date.today())
     trans_type_id   = fields.Many2one(comodel_name="transaction.type", string="Transaction Type", required=True )
     account_number_id  = fields.Many2one("savings.account", "Savings Account", required=True)
-    endofday_id     = fields.Many2one("end.of.day", "End Of Day ID", )
+    endofday_id     = fields.Many2one("end.of.day", "End Of Day ID",)
     saving_method = fields.Selection(string="Saving Method", selection=[('deposit', 'Deposit'), ('withdrawal', 'Withdrawal'), ], readonly=True )
     debit           = fields.Float(string="Debit",  default=0.0)
     credit          = fields.Float(string="Credit",  default=0.0)
@@ -124,6 +124,9 @@ class EndOfDay(models.Model):
     @api.one
     def generate_trans_post_jurnal(self):
         jurnal_entrie_obj = self.env['account.move']
+
+        number = self.env['ir.sequence'].next_by_code('account.reconcile')
+
         label = 'EOD' + self.date_endofday
 
         jurnal_endofday = self.env.user.company_id.jurnal_endofday_id
@@ -139,6 +142,7 @@ class EndOfDay(models.Model):
             raise ValidationError("Account Cash not defined,  please define on company information!")
 
         vals = {}
+        vals.update({'name': number})
         vals.update({'journal_id': jurnal_endofday.id})
         vals.update({'date': self.date_endofday})
         vals.update({'line_ids': [(0, 0,{
@@ -171,11 +175,28 @@ class EndOfDay(models.Model):
 
     @api.one
     def trans_post(self):
-        self.generate_trans_post_jurnal()
-        self.state = "posted"
+        # for row in self:
+        args = [('date', '=', self.date_endofday),('state', '=', 'paid')]
+        res = self.env['savings.trans'].search(args)
+        if res:
+            self.generate_trans_post_jurnal()
+            self.state = "posted"
+        else:
+            raise ValidationError("You can not posted because state not paid!")
+
+
+    @api.one
+    def unlink(self):
+        for endofday in self:
+            if endofday.state == 'posted':
+                raise ValidationError("You can not posted because state not paid!")
+        return super(EndOfDay, self).unlink()
 
     @api.one
     def trans_re_open(self):
+        for row in self:
+            args = [('date', '=', row.date_endofday)]
+            res = self.env['savings.trans'].search(args).write({'state': 'paid'})
         self.state = "new"  # pindah state ke new
 
     @api.one

@@ -65,13 +65,13 @@
                             <group>
                                 <field name="date"/>
                                 <field name="account_number_id"/>
-                            </group>
-                            <group>
                                 <field name="trans_type_id" options='{"create":False,"create_edit": False,"no_open": True}' />
-                                <field name="saving_method" />
                             </group>
                             <group>
-                                <field name="endofday_id" />
+                                <field name="saving_method" />
+                                <field name="endofday_id" readonly="True"/>
+                            </group>
+                            <group>
                                 <field name="debit" attrs="{'invisible': [('saving_method','!=','deposit')]}"/>
                             </group>
                             <group>

@@ -24,8 +24,6 @@
                             <group>
                                 <field name="account_company_id" />
                                 <field name="account_cash_id"/>
-                            </group>
-                            <group>
                                 <field name="jurnal_endofday_id" />
                             </group>
                         </group>
