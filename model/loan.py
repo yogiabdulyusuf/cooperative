@@ -21,7 +21,7 @@ class LoanType(models.Model):
     name  = fields.Char(string="Name", required=True, )
     maximum_amount = fields.Integer(string="Maximum Amount", required=True, )
     payment_option = fields.Selection(string="Payment Option", selection=[('month', 'Monthly'), ('year', 'Yearly'), ], required=True, )
-    interest_type = fields.Selection([('flat','Flat')], 'Interest Type', default='flat', required=True)
+    interest_type = fields.Selection([('flat','Flat'), ('efektif','Efektif'), ('anuitas','Anuitas'), ('tetap','Tetap')], 'Interest Type', default='flat', required=True)
     interest_percentage = fields.Float('Interest Percentage', default=0.0, required=True)
     iface_agunan = fields.Boolean('Agunan', default=False)
     agunan_amount = fields.Float(string="Agunan Min Amount", default=0.0)
@@ -45,7 +45,7 @@ class LoanTrans(models.Model):
     def trans_generate_line(self):
         loan_trans_line_obj = self.env['loan.trans.line']
         installment_amount = self.amount / self.installment_number
-        interest_amount = (self.amount * self.loan_type_id.interest_percentage * 0.01) / 12
+        interest_amount = self.amount * self.loan_type_id.interest_percentage / 100 / self.installment_number
         installment_total = installment_amount + interest_amount
         for i in range(self.installment_number):
             vals = {}
