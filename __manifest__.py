@@ -31,6 +31,7 @@ Cooperative
 		"view/loan_view.xml",
 		"view/deposit_view.xml",
 		"view/settings_view.xml",
+		"view/shu_view.xml",
 		"view/top_menu.xml",
 		"data/ir_sequence.xml",
 	],

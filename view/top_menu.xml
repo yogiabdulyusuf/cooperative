@@ -33,4 +33,8 @@
 	<menuitem id="configuration_menu_group" parent="cooperative_menu_root" name="Configuration" sequence="40"/>
 	<menuitem id="billing_menu_group" parent="configuration_menu_group" name="Billing" sequence="1"/>
 		<menuitem	id="menu_billing_periode"	name="Periode" parent="billing_menu_group"	action="act_billing_periode" />
+
+	<menuitem id="shu_menu_group" parent="cooperative_menu_root" name="SHU" sequence="50"/>
+		<menuitem	id="shu_allocated"	name="SHU Allocated" parent="shu_menu_group"	action="act_shu_allocated" />
+
 </odoo>

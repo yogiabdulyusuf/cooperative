@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="form_view_shu_allocated" model="ir.ui.view">
+            <field name="name">SHU Allocated</field>
+            <field name="model">shu.allocated</field>
+            <field name="arch" type="xml">
+                <form string="Form SHU Allocated">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="percentage"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="tree_view_shu_allocated" model="ir.ui.view">
+            <field name="name">SHU Allocated</field>
+            <field name="model">shu.allocated</field>
+            <field name="arch" type="xml">
+                <tree string="Tree SHU Allocated">
+                    <field name="name"/>
+                    <field name="percentage"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="act_shu_allocated" model="ir.actions.act_window">
+            <field name="name">SHU Allocated</field>
+            <field name="res_model">shu.allocated</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>
