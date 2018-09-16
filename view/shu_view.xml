@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
+        <!-- SHU Allocated -->
         <record id="form_view_shu_allocated" model="ir.ui.view">
             <field name="name">SHU Allocated</field>
             <field name="model">shu.allocated</field>
@@ -9,8 +9,23 @@
                 <form string="Form SHU Allocated">
                     <sheet>
                         <group>
-                            <field name="name"/>
-                            <field name="percentage"/>
+                            <group>
+                                <field name="year_shu"/>
+                                <field name="date"/>
+                                <field name="amount"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="loan_services_percen"/>
+                                <field name="purchase_service_percen" />
+                                <field name="deposit_services_percen" />
+                            </group>
+                            <group>
+                                <field name="loan_services" readonly="True"/>
+                                <field name="purchase_service" readonly="True"/>
+                                <field name="deposit_services" readonly="True"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>
@@ -22,8 +37,8 @@
             <field name="model">shu.allocated</field>
             <field name="arch" type="xml">
                 <tree string="Tree SHU Allocated">
-                    <field name="name"/>
-                    <field name="percentage"/>
+                    <field name="year_shu"/>
+                    <field name="date"/>
                 </tree>
             </field>
         </record>
@@ -31,6 +46,42 @@
         <record id="act_shu_allocated" model="ir.actions.act_window">
             <field name="name">SHU Allocated</field>
             <field name="res_model">shu.allocated</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- End SHU Allocated -->
+
+        <!-- journal shu -->
+        <record id="form_view_journal_shu" model="ir.ui.view">
+            <field name="name">Journal SHU</field>
+            <field name="model">journal.shu</field>
+            <field name="arch" type="xml">
+                <form string="Form Journal SHU">
+                    <sheet>
+                        <group>
+                            <field name="date"/>
+                            <field name="shuallocated_id"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="tree_view_journal_shu" model="ir.ui.view">
+            <field name="name">Journal SHU</field>
+            <field name="model">journal.shu</field>
+            <field name="arch" type="xml">
+                <tree string="Tree Journal SHU">
+                    <field name="date"/>
+                    <field name="shuallocated_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="act_journal_shu" model="ir.actions.act_window">
+            <field name="name">Journal SHU</field>
+            <field name="res_model">journal.shu</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>

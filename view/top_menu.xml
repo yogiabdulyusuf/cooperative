@@ -36,5 +36,6 @@
 
 	<menuitem id="shu_menu_group" parent="cooperative_menu_root" name="SHU" sequence="50"/>
 		<menuitem	id="shu_allocated"	name="SHU Allocated" parent="shu_menu_group"	action="act_shu_allocated" />
+		<menuitem	id="journal_shu"	name="Journal SHU" parent="shu_menu_group"	action="act_journal_shu" />
 
 </odoo>
