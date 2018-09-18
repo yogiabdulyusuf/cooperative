@@ -8,23 +8,33 @@
             <field name="arch" type="xml">
                 <form string="Form SHU Allocated">
                     <sheet>
+                        <div class="oe_title">
+                            <label for="amount_shu" class="oe_edit_only" string="Amount SHU" />
+                            <h1>
+                                <field name="amount"/>
+                            </h1>
+                        </div>
                         <group>
                             <group>
                                 <field name="year_shu"/>
                                 <field name="date"/>
-                                <field name="amount"/>
+                            </group>
+                            <group>
+                                <field name="loan_services_percen"/>
+                                <field name="purchase_service_percen" />
+                                <field name="savings_services_percen" />
                             </group>
                         </group>
                         <group>
                             <group>
-                                <field name="loan_services_percen"/>
-                                <field name="purchase_service_percen" />
-                                <field name="deposit_services_percen" />
-                            </group>
-                            <group>
                                 <field name="loan_services" readonly="True"/>
                                 <field name="purchase_service" readonly="True"/>
-                                <field name="deposit_services" readonly="True"/>
+                                <field name="savings_services" readonly="True"/>
+                            </group>
+                            <group>
+                                <field name="debit" readonly="True"/>
+                                <field name="credit" readonly="True"/>
+                                <field name="debit_and_credit" readonly="True"/>
                             </group>
                         </group>
                     </sheet>
@@ -57,12 +67,24 @@
             <field name="model">journal.shu</field>
             <field name="arch" type="xml">
                 <form string="Form Journal SHU">
+                    <header>
+                        <button name="process_shu" string="Process SHU" type="object" class="oe_highlight" confirm="Are you sure to Process SHU...?" states="open" />
+                        <field name="state" widget="statusbar" statusbar_visible="new,done"/>
+                    </header>
                     <sheet>
                         <group>
                             <field name="date"/>
                             <field name="shuallocated_id"/>
                         </group>
-
+                        <field name="savings_list_id">
+                            <tree string="SHU List" create="true" edit="false" delete="false">
+                                <field name="date"/>
+                                <field name="trans_type_id"/>
+                                <field name="debit"/>
+                                <field name="credit"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
                     </sheet>
                 </form>
             </field>
