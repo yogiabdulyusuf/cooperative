@@ -45,7 +45,7 @@ class SavingsAccount(models.Model):
     name               = fields.Many2one(comodel_name="res.partner", string="Name", domain=[('active_members','=', True)], required=True, )
     iface_default      = fields.Boolean('Default', default=False, readonly=True)
     balance            = fields.Float(string="Balance", compute='calculate_total_balance', readonly=True)
-    savings_list_id    = fields.One2many(comodel_name="savings.trans", inverse_name="account_number_id", string="Transactions")
+    savings_list_id    = fields.One2many(comodel_name="savings.trans", inverse_name="journal_shu_id", string="Transactions")
 
     @api.model
     def create(self, vals):
@@ -92,6 +92,7 @@ class SavingsTransaction(models.Model):
     date            = fields.Date(string="Date Paid", required=True, readonly=True, default=fields.Date.today())
     trans_type_id   = fields.Many2one(comodel_name="transaction.type", string="Transaction Type", required=True )
     account_number_id  = fields.Many2one("savings.account", "Savings Account", required=True)
+    journal_shu_id = fields.Many2one("journal.shu", "Journal SHU", required=True)
     endofday_id     = fields.Many2one("end.of.day", "End Of Day ID",)
     saving_method = fields.Selection(string="Saving Method", selection=[('deposit', 'Deposit'), ('withdrawal', 'Withdrawal'), ], readonly=True )
     debit           = fields.Float(string="Debit",  default=0.0)
