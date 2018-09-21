@@ -8,16 +8,11 @@
             <field name="arch" type="xml">
                 <form string="Form SHU Allocated">
                     <sheet>
-                        <div class="oe_title">
-                            <label for="amount_shu" class="oe_edit_only" string="Amount SHU" />
-                            <h1>
-                                <field name="amount"/>
-                            </h1>
-                        </div>
                         <group>
                             <group>
                                 <field name="year_shu"/>
                                 <field name="date"/>
+                                <field name="amount"/>
                             </group>
                             <group>
                                 <field name="loan_services_percen"/>
@@ -76,7 +71,7 @@
                             <field name="date"/>
                             <field name="shuallocated_id"/>
                         </group>
-                        <field name="savings_list_id">
+                        <field name="savings_trans_id">
                             <tree string="SHU List" create="true" edit="false" delete="false">
                                 <field name="date"/>
                                 <field name="trans_type_id"/>

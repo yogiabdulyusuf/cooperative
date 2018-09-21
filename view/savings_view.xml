@@ -64,6 +64,8 @@
                         <group>
                             <group>
                                 <field name="date"/>
+                                <!-- <field name="date_month" readonly="True"/>
+                                <field name="date_year" readonly="True"/> -->
                                 <field name="account_number_id"/>
                                 <field name="trans_type_id" options='{"create":False,"create_edit": False,"no_open": True}' />
                             </group>
@@ -116,10 +118,13 @@
                     <field name="saving_trans_id"/>
                     <field name="date"/>
                     <field name="account_number_id"/>
+                    <field name="debit"/>
+                    <field name="credit"/>
                     <field name="state"/>
                 </tree>
             </field>
         </record>
+        <!-- END SAVINGS TRANSACTION -->
 
         <!-- WIZARD CORECTION FORM -->
         <record id="corection_trans_view" model="ir.ui.view">
