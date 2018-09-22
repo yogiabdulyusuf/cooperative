@@ -10,12 +10,6 @@ class shuAllocated(models.Model):
     _rec_name = 'year_shu'
     _description = 'SHU Allocated'
 
-    # @api.one
-    # def calculate_loan_services(self):
-    #
-    #         total = total + (data_detail.debit - data_detail.credit) * self.loan_services_percen / 100
-    #     self.balance = total
-
 
     @api.one
     def calculate_percen(self):
@@ -65,22 +59,64 @@ class shuAllocated(models.Model):
 
 class journalSHU(models.Model):
     _name = 'journal.shu'
+    _rec_name = 'shu_number'
     _description = 'Journal SHU'
 
     @api.one
     def generate_trans_shu(self):
-        args = [('', '=', self.year_shu)]
-        res = self.env['savings.trans'].search(args)
+        args = [('state', '=', 'active')]
+        res = self.env['savings.account'].search(args)
+
+        for data_detail in res:
+            val_savings = 0
+            val_loan = 0
+            # val_purchase = 0.0
+
+            if self.shuallocated_id.savings_services_percen != 0:
+                val_savings = data_detail.debit / self.shuallocated_id.debit * self.shuallocated_id.savings_services
+
+            elif self.shuallocated_id.loan_services_percen != 0:
+                val_loan = data_detail.credit / self.shuallocated_id.credit * self.shuallocated_id.loan_services
+
+            # elif self.purchase_percen_val != 0.0:
+            total_shu_didapat = val_savings + val_loan   # val_purchase
+
+            # Generate Transaksi SHU
+            savings_trans_obj = self.env['savings.trans']
+            vals = {}
+            vals.update({'account_number_id': data_detail.id})
+            mandatory_savings = self.env.user.company_id.mandatory_savings_trans_type_id
+            if not mandatory_savings:
+                raise ValidationError("Pricinpal Savings not defined,  please define on company information!")
+            vals.update({'debit': total_shu_didapat})
+            vals.update({'saving_method': 'deposit'})
+            vals.update({'credit': 0.0})
+            vals.update({'trans_type_id': mandatory_savings.id})
+            vals.update({'journal_shu_id': self.id})
+            vals.update({'state': 'paid'})
+            saving_trans = savings_trans_obj.create(vals)
+            if not saving_trans:
+                raise ValidationError("Error Creating Trans SHU")
+
+        self.state = "done"
+
+    # @api.model
+    # def process_shu(self, vals):
+    #     res = super(journalSHU, self).create(vals)  # Super berfungsi memanggil model ketika eksekusi create
+    #     res.generate_trans_shu()                 # Menjalankan generate_saving_trans()
+    #     return res
 
     @api.model
-    def process_shu(self , vals):
-        res = super(journalSHU, self).create(vals)  # Super berfungsi memanggil model ketika eksekusi create
-        res.generate_trans_shu()                 # Menjalankan generate_saving_trans()
+    def create(self, vals):
+        vals['shu_number'] = self.env['ir.sequence'].next_by_code('journal.shu')
+        res = super(journalSHU, self).create(vals)
+        res.generate_trans_shu()
         return res
 
+    shu_number = fields.Char(string="SHU Number")
     date = fields.Datetime(string="Date today", required=False, )
     shuallocated_id = fields.Many2one(comodel_name="shu.allocated", string="SHU", required=False, )
     savings_trans_id = fields.One2many(comodel_name="savings.trans", inverse_name="journal_shu_id",
                                       string="Transactions")
-    state = fields.Selection(string="state", selection=[('open', 'Open'), ('done', 'Done'), ], required=False, default='open')
+    state = fields.Selection(string="state", selection=[('new', 'New'), ('open', 'Open'), ('done', 'Done'), ], required=False, default='new')
 

@@ -65,6 +65,15 @@
 			<field name="implementation">standard</field>
 		</record>
 
+		<record id="seq_jurnal" model="ir.sequence">
+			<field name="name">Journal SHU</field>
+			<field name="code">journal.shu</field>
+			<field name="prefix">SHU%(year)s%(month)s</field>
+			<field name="padding">3</field>
+			<field name="next_number_actual">1</field>
+			<field name="number_increment">1</field>
+			<field name="implementation">standard</field>
+		</record>
 		<!-- Kas
 		<record id="seq_type_kas_in" model="ir.sequence.type">
 			<field name="name">Bukti Kas Masuk Type</field>

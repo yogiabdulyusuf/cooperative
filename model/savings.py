@@ -40,13 +40,38 @@ class SavingsAccount(models.Model):
             total = total + (data_detail.debit - data_detail.credit)
         self.balance = total
 
+    @api.one
+    def calculate_total_debit(self):
+        total = 0
+        for data_detail in self.savings_list_id:
+            total = total + data_detail.debit
+        self.debit = total
+
+    @api.one
+    def calculate_total_credit(self):
+        total = 0
+        for data_detail in self.savings_list_id:
+            total = total + data_detail.credit
+        self.credit = total
+
+    @api.one
+    def check_active_member(self):
+        for check in  self.name:
+            if check.active_members is True:
+                self.state = 'active'
+            else:
+                self.state = 'notactive'
+
 
     account_number     = fields.Char(string="Account Number" )
     interest           = fields.Selection(string="Savings Interest", selection=[('flat', 'Flat'), ('fluktuatif', 'Fluktuatif'), ], required=True, default='flat')
     name               = fields.Many2one(comodel_name="res.partner", string="Name", domain=[('active_members','=', True)], required=True, )
     iface_default      = fields.Boolean('Default', default=False, readonly=True)
     balance            = fields.Float(string="Balance", compute='calculate_total_balance', readonly=True)
+    debit              = fields.Float(string="Debit", compute='calculate_total_debit', readonly=True)
+    credit             = fields.Float(string="Credit", compute='calculate_total_credit', readonly=True)
     savings_list_id    = fields.One2many(comodel_name="savings.trans", inverse_name="account_number_id", string="Transactions")
+    state              = fields.Selection(string="", selection=[('active', 'Active'), ('notactive', 'Not Active'), ], compute='check_active_member', required=False, )
 
     @api.model
     def create(self, vals):

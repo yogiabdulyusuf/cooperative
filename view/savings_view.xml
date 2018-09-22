@@ -207,6 +207,9 @@
             <field name="model">savings.account</field>
             <field name="arch" type="xml">
                 <form string="savings_account_form">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="active,notactive"/>
+                    </header>
                     <sheet>
                         <div class="oe_title">
                             <label for="account_number" class="oe_edit_only" string="Account Number" />
@@ -222,6 +225,8 @@
 
                             <group>
                                 <field name="balance" />
+                                <field name="debit" />
+                                <field name="credit" />
                             </group>
                         </group>
 

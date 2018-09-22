@@ -64,9 +64,15 @@
                 <form string="Form Journal SHU">
                     <header>
                         <button name="process_shu" string="Process SHU" type="object" class="oe_highlight" confirm="Are you sure to Process SHU...?" states="open" />
-                        <field name="state" widget="statusbar" statusbar_visible="new,done"/>
+                        <field name="state" widget="statusbar" statusbar_visible="new,open,done"/>
                     </header>
                     <sheet>
+                        <div class="oe_title">
+                            <label for="shu_number" class="oe_edit_only" string="SHU Number" />
+                            <h1>
+                                <field name="shu_number" readonly="True"/>
+                            </h1>
+                        </div>
                         <group>
                             <field name="date"/>
                             <field name="shuallocated_id"/>
