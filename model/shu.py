@@ -118,5 +118,6 @@ class journalSHU(models.Model):
     shuallocated_id = fields.Many2one(comodel_name="shu.allocated", string="SHU", required=False, )
     savings_trans_id = fields.One2many(comodel_name="savings.trans", inverse_name="journal_shu_id",
                                       string="Transactions")
-    state = fields.Selection(string="state", selection=[('new', 'New'), ('open', 'Open'), ('done', 'Done'), ], required=False, default='new')
+    state = fields.Selection(string="state", selection=[('draft', 'Draft'),('request', 'Request'),('review', 'Review'),('approve', 'Approve'),('reject', 'Reject'),
+          ('done', 'Done'), ], required=False, default='new')
 

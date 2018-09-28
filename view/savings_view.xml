@@ -48,10 +48,8 @@
             <field name="arch" type="xml">
                 <form string="savings_trans_form">
                     <header>
-                        <button name="trans_open" string="Open" type="object" class="oe_highlight" states="new" />
                         <button name="trans_paid" string="Paid" type="object" class="oe_highlight" confirm="has the customer paid?" states="open" />
-                        <button name="trans_corection" string="Corection" type="object" class="oe_highlight" states="open" />
-                        <button name="trans_re_open" string="Re-Open" type="object" class="oe_highlight" confirm="Are you sure to Re-Open...?" states="posted" />
+                        <button name="trans_corection" string="Corection" type="object" class="oe_highlight" states="paid" />
                         <field name="state" widget="statusbar" statusbar_visible="new,open,paid,posted"/>
                     </header>
                     <sheet>
@@ -72,6 +70,9 @@
                             <group>
                                 <field name="saving_method" />
                                 <field name="endofday_id" readonly="True"/>
+                            </group>
+                            <group>
+                                <field name="balance_ssk" attrs="{'invisible': [('saving_method','!=','withdrawal')]}"/>
                             </group>
                             <group>
                                 <field name="debit" attrs="{'invisible': [('saving_method','!=','deposit')]}"/>
@@ -268,14 +269,13 @@
         <!-- END OF DAY -->
         <record id="endofday_form_view" model="ir.ui.view">
             <field name="name">End Of Day Form</field>
-            <field name="model">end.of.day</field>
+            <field name="model">endof.day</field>
             <field name="arch" type="xml">
                 <form string="end_of_day_form">
-
                     <header>
                         <button name="trans_re_open" string="Re-Open" type="object" class="oe_highlight" confirm="Are you sure to Re-Open...?" states="posted" />
-                        <button name="trans_post" string="Posted" type="object" class="oe_highlight" confirm="Are you sure you have checked the cash income, which is the same as the one on the end of day?" states="new" />
-                        <field name="state" widget="statusbar" statusbar_visible="new,posted"/>
+                        <button name="trans_post" string="Posted" type="object" class="oe_highlight" confirm="Are you sure you have checked the cash income, which is the same as the one on the end of day?" states="open" />
+                        <field name="state" widget="statusbar" statusbar_visible="new,open,posted"/>
                     </header>
                     <sheet>
                         <group>
@@ -304,7 +304,7 @@
 
         <record id="endofday_tree_view" model="ir.ui.view">
             <field name="name">End Of Day Tree</field>
-            <field name="model">end.of.day</field>
+            <field name="model">endof.day</field>
             <field name="arch" type="xml">
                 <tree string="endofday_tree">
                     <field name="date_endofday"/>
@@ -314,7 +314,7 @@
 
         <record id="act_endofday" model="ir.actions.act_window">
             <field name="name">End Of Day</field>
-            <field name="res_model">end.of.day</field>
+            <field name="res_model">endof.day</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>

@@ -63,8 +63,8 @@
             <field name="arch" type="xml">
                 <form string="Form Journal SHU">
                     <header>
-                        <button name="process_shu" string="Process SHU" type="object" class="oe_highlight" confirm="Are you sure to Process SHU...?" states="open" />
-                        <field name="state" widget="statusbar" statusbar_visible="new,open,done"/>
+                        <button name="process_shu" string="Process SHU" type="object" class="oe_highlight" confirm="Are you sure to Process SHU...?" states="draft" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,request,review,approve,reject,done"/>
                     </header>
                     <sheet>
                         <div class="oe_title">

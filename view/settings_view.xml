@@ -20,6 +20,7 @@
                             <group>
                                 <field name="principal_savings_trans_type_id" />
                                 <field name="mandatory_savings_trans_type_id" />
+                                <field name="voluntary_savings_trans_type_id" />
                             </group>
                             <group>
                                 <field name="account_company_id" />
