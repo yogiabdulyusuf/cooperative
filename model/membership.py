@@ -66,9 +66,10 @@ class Termination(models.Model):
     _rec_name = 'termination_id'
     _description = 'Member Termination'
 
-    termination_id = fields.Char(string="Termination ID", required=True, )
+    termination_id = fields.Char(string="Termination ID", required=True, readonly="True")
+    date = fields.Datetime(string="Date", required=True, readonly="True", default=fields.Datetime.now)
     member_id = fields.Many2one(comodel_name="res.partner", string="Member ID", required=True, )
-    descrip = fields.Text(string="Description", required=False, )
+    state = fields.Selection(string="State", selection=[('draft', 'Draft'), ('review', 'Review'), ('request', 'Request'), ('approve', 'Approve'), ('done', 'Done'), ], required=False, default="draft")
 
 
 

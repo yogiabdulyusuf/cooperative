@@ -38,6 +38,7 @@ class BillingPerioderLine(models.Model):
     billing_id = fields.Many2one('billing.periode','Periode #', readonly=True)
     start_date = fields.Date('Start Date', required=True, readonly=True)
     end_date = fields.Date('End Date', required=True, readonly=True)
+    loan_trans_line_id = fields.One2many(comodel_name="loan.trans.line", inverse_name="billing_id", string="Loan Trans", required=False, )
     state = fields.Selection([('open','Open'),('done','Close')], 'Status', default='open', readonly=True)
 
 

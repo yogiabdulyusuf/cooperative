@@ -66,21 +66,12 @@
                                 <field name="date_year" readonly="True"/> -->
                                 <field name="account_number_id"/>
                                 <field name="trans_type_id" options='{"create":False,"create_edit": False,"no_open": True}' />
-                            </group>
-                            <group>
                                 <field name="saving_method" />
-                                <field name="endofday_id" readonly="True"/>
-                            </group>
-                            <group>
+                                <!-- <field name="endofday_id" readonly="True"/> -->
                                 <field name="balance_ssk" attrs="{'invisible': [('saving_method','!=','withdrawal')]}"/>
-                            </group>
-                            <group>
                                 <field name="debit" attrs="{'invisible': [('saving_method','!=','deposit')]}"/>
-                            </group>
-                            <group>
                                 <field name="credit" attrs="{'invisible': [('saving_method','!=','withdrawal')]}"/>
                             </group>
-
                         </group>
                     </sheet>
                 </form>
@@ -286,17 +277,20 @@
                             </group>
 
                         </group>
-
-                        <field name="savings_list_id">
-                            <tree string="Savings List" create="true" edit="false" delete="false">
-                                <field name="date" />
-                                <field name="trans_type_id" />
-                                <field name="account_number_id" />
-                                <field name="debit" />
-                                <field name="credit" />
-                                <field name="state" />
-                            </tree>
-                        </field>
+                        <notebook>
+                           <page string="Savings">
+                                <field name="savings_list_id">
+                                    <tree string="Savings List" create="true" edit="false" delete="false">
+                                        <field name="date" />
+                                        <field name="trans_type_id" />
+                                        <field name="account_number_id" />
+                                        <field name="debit" />
+                                        <field name="credit" />
+                                        <field name="state" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
