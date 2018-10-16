@@ -30,8 +30,13 @@
 	<menuitem id="deposit_menu_group" parent="cooperative_menu_root" name="Deposit" sequence="35"/>
 		<menuitem	id="long_desposit"	name="Long Deposits" parent="deposit_menu_group"	action="act_long_deposit" />
 
+
+	<menuitem id="shu_menu_group" parent="cooperative_menu_root" name="SHU" sequence="40"/>
+		<menuitem	id="shu_allocated"	name="SHU Allocated" parent="shu_menu_group"	action="act_shu_allocated" />
+		<menuitem	id="journal_shu"	name="Journal SHU" parent="shu_menu_group"	action="act_journal_shu" />
+
 	<!-- This Menu Group Configuration-->
-	<menuitem id="configuration_menu_group" parent="cooperative_menu_root" name="Configuration" sequence="40"/>
+	<menuitem id="configuration_menu_group" parent="cooperative_menu_root" name="Configuration" sequence="50"/>
 		<menuitem id="savings_config_group" parent="configuration_menu_group" name="Savings" sequence="1"/>
 			<menuitem	id="type_savings_transaction"	name="Type" parent="savings_config_group"	action="act_transaction_type" />
 
@@ -41,8 +46,6 @@
 		<menuitem id="billing_menu_group" parent="configuration_menu_group" name="Billing" sequence="2"/>
 			<menuitem	id="menu_billing_periode"	name="Periode" parent="billing_menu_group"	action="act_billing_periode" />
 
-	<menuitem id="shu_menu_group" parent="cooperative_menu_root" name="SHU" sequence="50"/>
-		<menuitem	id="shu_allocated"	name="SHU Allocated" parent="shu_menu_group"	action="act_shu_allocated" />
-		<menuitem	id="journal_shu"	name="Journal SHU" parent="shu_menu_group"	action="act_journal_shu" />
+
 
 </odoo>

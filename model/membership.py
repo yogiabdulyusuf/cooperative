@@ -66,10 +66,21 @@ class Termination(models.Model):
     _rec_name = 'termination_id'
     _description = 'Member Termination'
 
-    termination_id = fields.Char(string="Termination ID", required=True, readonly="True")
+    @api.one
+    def trans_open(self):
+        self.state = "open"
+
+    @api.model
+    def create(self, vals):
+        vals['termination_id'] = self.env['ir.sequence'].next_by_code('member.termination')
+        res = super(Termination, self).create(vals)
+        res.trans_open()
+        return res
+
+    termination_id = fields.Char(string="Termination ID", readonly="True")
     date = fields.Datetime(string="Date", required=True, readonly="True", default=fields.Datetime.now)
     member_id = fields.Many2one(comodel_name="res.partner", string="Member ID", required=True, )
-    state = fields.Selection(string="State", selection=[('draft', 'Draft'), ('review', 'Review'), ('request', 'Request'), ('approve', 'Approve'), ('done', 'Done'), ], required=False, default="draft")
+    state = fields.Selection(string="State", selection=[('draft', 'Draft'), ('open', 'Open'), ('review', 'Review'), ('request', 'Request'), ('approve', 'Approve'), ('done', 'Done'), ], required=False, default="draft")
 
 
 
