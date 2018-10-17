@@ -48,16 +48,37 @@
             <field name="model">member.termination</field>
             <field name="arch" type="xml">
                 <form string="Termination Form">
+                    <header>
+                        <button name="trans_review" String="Review" type="object" class="oe_highlight" states="open" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,open,review,request,approve,done"/>
+                    </header>
                     <sheet>
+                        <div class="oe_title">
+                            <label for="termination_id" class="oe_edit_only" string="Termination ID" />
+                            <h1>
+                                <field name="termination_id"/>
+                            </h1>
+                        </div>
                         <group>
-                            <field name="termination_id" readonly="1"/>
                             <group>
+                                <field name="date"/>
                                 <field name="member_id"/>
                             </group>
-                            <field name="descrip"/>
                         </group>
                     </sheet>
                 </form>
+            </field>
+        </record>
+
+        <record id="termination_view_tree" model="ir.ui.view">
+            <field name="name">Termination Member</field>
+            <field name="model">member.termination</field>
+            <field name="arch" type="xml">
+                <tree string="Form Tree">
+                    <field name="termination_id"/>
+                    <field name="date"/>
+                    <field name="member_id"/>
+                </tree>
             </field>
         </record>
 
@@ -65,7 +86,7 @@
             <field name="name">Termination</field>
             <field name="res_model">member.termination</field>
             <field name="view_type">form</field>
-            <field name="view_mode">form</field>
+            <field name="view_mode">tree,form</field>
         </record>
         <!-- END TERMINATION -->
 

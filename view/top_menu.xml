@@ -9,33 +9,47 @@
 		<menuitem	id="menu_termination"	name="Termination" parent="membership_menu_group"	action="act_termination" />
 
 	<!-- This Menu Group Savings -->
-	<menuitem id="savings_menu_group" parent="cooperative_menu_root" name="Savings" sequence="10"/>
-		<menuitem	id="type_savings_transaction"	name="Transaction Type" parent="savings_menu_group"	action="act_transaction_type" />
-		<menuitem	id="savings_deposit"	name="Deposit" parent="savings_menu_group"	action="act_deposit_view" />
-		<menuitem	id="savings_withdrawal"	name="Withdrawal" parent="savings_menu_group"	action="act_withdrawal_view" />
-		<menuitem	id="savings_transaction"	name="Savings Transaction" parent="savings_menu_group"	action="act_saving_trans" />
-		<menuitem	id="end_of_day"	name="End Of Day" parent="savings_menu_group"	action="act_endofday" />
-		<menuitem	id="savings_account"	name="Savings Account" parent="savings_menu_group"	action="act_saving_account" />
-		<menuitem	id="corection"	name="Corection" parent="savings_menu_group"	action="act_corection_tree" />
-		<menuitem	id="billing_saving"	name="Billing Information" parent="savings_menu_group"	action="" />
-		<menuitem	id="outstanding_saving"	name="Outstanding Information" parent="savings_menu_group"	action="" />
+	<menuitem id="front_office_group" parent="cooperative_menu_root" name="Front Office" sequence="10"/>
+		<menuitem id="front_office_savings_group" parent="front_office_group" name="Savings" />
+			<menuitem	id="savings_deposit"	name="Deposit" parent="front_office_savings_group"	action="act_deposit_view" />
+			<menuitem	id="savings_withdrawal"	name="Withdrawal" parent="front_office_savings_group"	action="act_withdrawal_view" />
+
+		<menuitem id="front_office_loan_group" parent="front_office_group" name="Loan" />
+			<menuitem	id="loan_trans"	name="Transaction" parent="front_office_loan_group"	action="act_loan_trans_view_front_office" />
+
+
 	<!-- This Menu Group Savings -->
-	<menuitem id="loan_menu_group" parent="cooperative_menu_root" name="Loan" sequence="20"/>
-		<menuitem	id="type_loan"	name="Loan Type" parent="loan_menu_group"	action="act_loan_type" />
-		<menuitem	id="type_loan_trans"	name="Loan Transaction" parent="loan_menu_group"	action="act_loan_trans" />
-		<menuitem	id="billing_loan"	name="Billing Information" parent="loan_menu_group"	action="" />
-		<menuitem	id="outstanding_loan"	name="Outstanding Information" parent="loan_menu_group"	action="" />
+	<menuitem id="back_office_group" parent="cooperative_menu_root" name="Back Office" sequence="20"/>
+		<menuitem id="back_office_savings_group" parent="back_office_group" name="Savings" />
+			<menuitem	id="savings_transaction"	name="Transaction" parent="back_office_savings_group"	action="act_saving_trans" sequence="1"/>
+			<menuitem	id="corection"	name="Corection" parent="back_office_savings_group"	action="act_corection_tree" sequence="4"/>
+
+		<menuitem id="back_office_loan_group" parent="back_office_group" name="Loan"/>
+			<menuitem	id="type_loan_trans"	name="Transaction" parent="back_office_loan_group"	action="act_loan_trans" />
+
+		<menuitem	id="savings_account"	name="Account" parent="back_office_group"	action="act_saving_account" />
+		<menuitem	id="end_of_day"	name="End Of Day" parent="back_office_group"	action="act_endofday" />
+
 	<!-- This Menu Group Deposit -->
 	<menuitem id="deposit_menu_group" parent="cooperative_menu_root" name="Deposit" sequence="35"/>
 		<menuitem	id="long_desposit"	name="Long Deposits" parent="deposit_menu_group"	action="act_long_deposit" />
 
-	<!-- This Menu Group Configuration-->
-	<menuitem id="configuration_menu_group" parent="cooperative_menu_root" name="Configuration" sequence="40"/>
-	<menuitem id="billing_menu_group" parent="configuration_menu_group" name="Billing" sequence="1"/>
-		<menuitem	id="menu_billing_periode"	name="Periode" parent="billing_menu_group"	action="act_billing_periode" />
 
-	<menuitem id="shu_menu_group" parent="cooperative_menu_root" name="SHU" sequence="50"/>
+	<menuitem id="shu_menu_group" parent="cooperative_menu_root" name="SHU" sequence="40"/>
 		<menuitem	id="shu_allocated"	name="SHU Allocated" parent="shu_menu_group"	action="act_shu_allocated" />
 		<menuitem	id="journal_shu"	name="Journal SHU" parent="shu_menu_group"	action="act_journal_shu" />
+
+	<!-- This Menu Group Configuration-->
+	<menuitem id="configuration_menu_group" parent="cooperative_menu_root" name="Configuration" sequence="50"/>
+		<menuitem id="savings_config_group" parent="configuration_menu_group" name="Savings" sequence="1"/>
+			<menuitem	id="type_savings_transaction"	name="Type" parent="savings_config_group"	action="act_transaction_type" />
+
+		<menuitem id="loan_config_group" parent="configuration_menu_group" name="Loan" sequence="1"/>
+			<menuitem	id="type_loan"	name="Type" parent="loan_config_group"	action="act_loan_type" />
+
+		<menuitem id="billing_menu_group" parent="configuration_menu_group" name="Billing" sequence="2"/>
+			<menuitem	id="menu_billing_periode"	name="Periode" parent="billing_menu_group"	action="act_billing_periode" />
+
+
 
 </odoo>
