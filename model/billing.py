@@ -22,6 +22,27 @@ class BillingPeriode(models.Model):
             vals.update({'end_date': lastday})
             res = billing_periode_line_obj.create(vals)
 
+    # @api.one
+    # def generate_billing_savings(self):
+    #     # Generate Transaksi Simpanan Wajib
+    #     savings_trans_obj = self.env['savings.trans']
+    #
+    #     mandatory_savings = self.env.user.company_id.mandatory_savings_trans_type_id
+    #     if not mandatory_savings:
+    #         raise ValidationError("Mandatory Savings not defined, please define on company information!")
+    #
+    #     vals = {}
+    #     vals.update({'account_number_id': savings_account.id})
+    #     vals.update({'debit': self.env.user.company_id.mandatory_savings})
+    #     vals.update({'saving_method': 'deposit'})
+    #     vals.update({'credit': 0.0})
+    #     vals.update({'trans_type_id': mandatory_savings.id})
+    #     vals.update({'state': 'openbilling'})
+    #     saving_trans = savings_trans_obj.create(vals)
+    #
+    #     if not saving_trans:
+    #         raise ValidationError("Error Creating Simpanan Wajib")
+
     name = fields.Integer('Year', required=True)
     line_ids = fields.One2many('billing.periode.line','billing_id','Details', readonly=True)
 
@@ -29,6 +50,7 @@ class BillingPeriode(models.Model):
     def create(self, vals):
         res = super(BillingPeriode, self).create(vals)
         res.trans_generate_line()
+        # res.generate_billing_savings()
         return res
 
 class BillingPerioderLine(models.Model):
