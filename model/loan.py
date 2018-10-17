@@ -159,6 +159,7 @@ class LoanTransLine(models.Model):
     date_request_review = fields.Datetime('Review Date', readony=True)
     iface_request_approval = fields.Boolean('Approval', default=False, readonly=True)
     date_request_approval = fields.Datetime('Approval Date', readony=True)
+    billing_id = fields.Many2one(comodel_name="billing.periode.line", string="Billing ID", )
     loan_invoice_ids = fields.One2many('account.invoice','loan_trans_line_id', 'Invoices', readonly=True)
     state = fields.Selection(STATES, "Status", compute='get_state', required=True)
 

@@ -46,5 +46,40 @@
         </record>
         <!-- END LONG DEPOSIT -->
 
+        <record id="billing_trans_line" model="ir.ui.view">
+            <field name="name">Billing Periode Line</field>
+            <field name="model">billing.periode.line</field>
+            <field name="arch" type="xml">
+                <form string="Form Billing">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="billing_id"/>
+                            </group>
+                            <group>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Billing Loan">
+                                <field name="loan_trans_id">
+                                    <tree string="Loan Trans Line" create="0" edit="0" delete="0">
+                                        <field name="name"/>
+                                        <field name="due_date"/>
+                                        <field name="installment_amount"/>
+                                        <field name="interest_amount"/>
+                                        <field name="installment_total"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
     </data>
 </odoo>

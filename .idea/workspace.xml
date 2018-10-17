@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="71333825-cf8e-4e3d-8144-c98f46082025" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/data/ir_sequence.xml" afterPath="$PROJECT_DIR$/data/ir_sequence.xml" />
+      <change beforePath="$PROJECT_DIR$/model/billing.py" afterPath="$PROJECT_DIR$/model/billing.py" />
+      <change beforePath="$PROJECT_DIR$/model/loan.py" afterPath="$PROJECT_DIR$/model/loan.py" />
       <change beforePath="$PROJECT_DIR$/model/savings.py" afterPath="$PROJECT_DIR$/model/savings.py" />
-      <change beforePath="$PROJECT_DIR$/model/shu.py" afterPath="$PROJECT_DIR$/model/shu.py" />
-      <change beforePath="$PROJECT_DIR$/view/savings_view.xml" afterPath="$PROJECT_DIR$/view/savings_view.xml" />
-      <change beforePath="$PROJECT_DIR$/view/shu_view.xml" afterPath="$PROJECT_DIR$/view/shu_view.xml" />
+      <change beforePath="$PROJECT_DIR$/view/billing_view.xml" afterPath="$PROJECT_DIR$/view/billing_view.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,70 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="shu.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/model/shu.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="111" column="24" lean-forward="true" selection-start-line="111" selection-start-column="24" selection-end-line="111" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ir_sequence.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/ir_sequence.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="71" column="43" lean-forward="true" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="savings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/savings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1292">
-              <caret line="76" column="27" lean-forward="true" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="membership.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/membership.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="37" column="19" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="88" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shu_view.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/shu_view.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="68" column="27" lean-forward="true" selection-start-line="68" selection-start-column="27" selection-end-line="68" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="savings_view.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/savings_view.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="225" column="35" lean-forward="true" selection-start-line="225" selection-start-column="35" selection-end-line="225" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -127,18 +63,18 @@
         <option value="$PROJECT_DIR$/wizard/__init__.py" />
         <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/model/__init__.py" />
-        <option value="$PROJECT_DIR$/view/billing_view.xml" />
         <option value="$PROJECT_DIR$/__manifest__.py" />
-        <option value="$PROJECT_DIR$/model/billing.py" />
         <option value="$PROJECT_DIR$/view/loan_view.xml" />
-        <option value="$PROJECT_DIR$/model/loan.py" />
         <option value="$PROJECT_DIR$/view/top_menu.xml" />
-        <option value="$PROJECT_DIR$/model/savings.py" />
         <option value="$PROJECT_DIR$/view/savings_view.xml" />
         <option value="$PROJECT_DIR$/model/membership.py" />
         <option value="$PROJECT_DIR$/data/ir_sequence.xml" />
         <option value="$PROJECT_DIR$/view/shu_view.xml" />
         <option value="$PROJECT_DIR$/model/shu.py" />
+        <option value="$PROJECT_DIR$/model/savings.py" />
+        <option value="$PROJECT_DIR$/model/loan.py" />
+        <option value="$PROJECT_DIR$/model/billing.py" />
+        <option value="$PROJECT_DIR$/view/billing_view.xml" />
       </list>
     </option>
   </component>
@@ -163,6 +99,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -175,21 +112,10 @@
               <item name="cooperative" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="cooperative" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cooperative" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cooperative" type="462c0819:PsiDirectoryNode" />
-              <item name="wizard" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -348,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1537283754030</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="update shu clear">
+      <created>1537631377609</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1537631377609</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -391,7 +324,8 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/10.0' into 10.0&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;model/loan.py" />
     <MESSAGE value="update loan" />
     <MESSAGE value="update shu" />
-    <option name="LAST_COMMIT_MESSAGE" value="update shu" />
+    <MESSAGE value="update shu clear" />
+    <option name="LAST_COMMIT_MESSAGE" value="update shu clear" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -649,32 +583,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/billing_view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="38" column="17" lean-forward="false" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/__manifest__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="10" lean-forward="false" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/billing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/loan_view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-180">
-          <caret line="69" column="31" lean-forward="false" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -686,10 +598,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/loan.py">
+    <entry file="file://$PROJECT_DIR$/model/shu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="94" column="78" lean-forward="true" selection-start-line="94" selection-start-column="78" selection-end-line="94" selection-end-column="78" />
+        <state relative-caret-position="17">
+          <caret line="75" column="67" lean-forward="false" selection-start-line="75" selection-start-column="67" selection-end-line="75" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/ir_sequence.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="71" column="43" lean-forward="false" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -697,33 +616,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="37" column="19" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/ir_sequence.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="71" column="43" lean-forward="true" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/savings_view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="225" column="35" lean-forward="true" selection-start-line="225" selection-start-column="35" selection-end-line="225" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/savings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="76" column="27" lean-forward="true" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -735,10 +627,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/shu.py">
+    <entry file="file://$PROJECT_DIR$/view/savings_view.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="111" column="24" lean-forward="true" selection-start-line="111" selection-start-column="24" selection-end-line="111" selection-end-column="24" />
+        <state relative-caret-position="-44">
+          <caret line="225" column="0" lean-forward="true" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/loan_view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="78" column="35" lean-forward="false" selection-start-line="78" selection-start-column="35" selection-end-line="78" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/billing_view.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="66" column="60" lean-forward="false" selection-start-line="66" selection-start-column="60" selection-end-line="66" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/loan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="161" column="6" lean-forward="false" selection-start-line="161" selection-start-column="4" selection-end-line="161" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/savings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="150" column="14" lean-forward="true" selection-start-line="150" selection-start-column="14" selection-end-line="150" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/billing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="38" column="72" lean-forward="false" selection-start-line="38" selection-start-column="72" selection-end-line="38" selection-end-column="72" />
           <folding />
         </state>
       </provider>

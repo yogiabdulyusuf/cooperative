@@ -125,7 +125,7 @@ class SavingsTransaction(models.Model):
     def calculate_ssk(self):
         voluntary_savings = self.env.user.company_id.voluntary_savings_trans_type_id
         if not voluntary_savings:
-            raise ValidationError("Pricinpal Savings not defined,  please define on company information!")
+            raise ValidationError("Voluntary Savings not defined,  please define on company information!")
 
         args = [('account_number_id', '=', self.account_number_id.id), ('trans_type_id', '=', voluntary_savings.id)]
         res = self.env['savings.trans'].search(args)
