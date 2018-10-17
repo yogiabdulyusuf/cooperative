@@ -120,6 +120,16 @@
         </record>
         <!-- END LOAN TRANSACTION -->
 
+        <!-- LOAN TRANSACTION FORM FRONT OFFICE-->
+        <record id="act_loan_trans_view_front_office" model="ir.actions.act_window">
+            <field name="name">Loan Transaction Form</field>
+            <field name="res_model">loan.trans</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="loan_trans_form_view"/>
+        </record>
+        <!-- END LOAN TRANSACTION FORM FRONT OFFICE -->
+
 
     </data>
 </odoo>
