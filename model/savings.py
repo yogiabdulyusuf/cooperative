@@ -149,7 +149,7 @@ class SavingsTransaction(models.Model):
     date                = fields.Date(string="Create Date", required=True, readonly=True, default=fields.Date.today())
     date_billing        = fields.Date(string="Date Billing", required=False, readonly=True)
     date_paid           = fields.Date(string="Date Paid", required=False, readonly=True)
-    date_month          = fields.Integer(string="Date Month", required=False, default=datettime.now().strftime('%m'))
+    date_month          = fields.Integer(string="Date Month", required=False, default=datetime.now().strftime('%m'))
     date_year           = fields.Integer(string="Date Year", required=False, default=datetime.now().strftime('%Y'))
     trans_type_id       = fields.Many2one(comodel_name="transaction.type", string="Transaction Type", required=True )
     account_number_id   = fields.Many2one("savings.account", "Savings Account", required=True)

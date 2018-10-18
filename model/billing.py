@@ -53,8 +53,9 @@ class BillingPeriode(models.Model):
         # res.generate_billing_savings()
         return res
 
-class BillingPerioderLine(models.Model):
+class BillingPeriodeLine(models.Model):
     _name = 'billing.periode.line'
+    _rec_name = 'billing_id'
 
     name = fields.Integer('Month', required=True, readonly=True)
     billing_id = fields.Many2one('billing.periode','Periode #', readonly=True)
