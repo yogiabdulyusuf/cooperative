@@ -62,7 +62,7 @@
                         <group>
                             <group>
                                 <field name="date"/>
-                                <field name="date_billing"/>
+                                <field name="date_month"/>
                                 <field name="date_paid"/>
                                 <!-- <field name="date_month" readonly="True"/>
                                 <field name="date_year" readonly="True"/> -->
@@ -224,7 +224,7 @@
                             </group>
                         </group>
                         <notebook>
-                           <page string="Savings">
+                            <page string="Savings">
                                 <field name="savings_list_id">
                                     <tree string="Savings List" create="true" edit="false" delete="false">
                                         <field name="date"/>
@@ -234,7 +234,20 @@
                                         <field name="state"/>
                                     </tree>
                                 </field>
-                           </page>
+                            </page>
+
+                            <page string="Loan">
+                                <field name="loan_list_id">
+                                    <tree string="loan_trans_tree" create="true" edit="false" delete="false">
+                                        <field name="trans_number"/>
+                                        <field name="date"/>
+                                        <field name="loan_type_id"/>
+                                        <field name="estimate_start_date"/>
+                                        <field name="amount"/>
+                                        <field name="state"/>
+                                    </tree>
+                               </field>
+                            </page>
                         </notebook>
                     </sheet>
                 </form>

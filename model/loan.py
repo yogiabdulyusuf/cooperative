@@ -19,13 +19,13 @@ class LoanType(models.Model):
     _name = 'loan.type'
     _description = 'Loan Type'
 
-    name  = fields.Char(string="Name", required=True, )
-    maximum_amount = fields.Integer(string="Maximum Amount", required=True, )
-    payment_option = fields.Selection(string="Payment Option", selection=[('month', 'Monthly'), ('year', 'Yearly'), ], required=True, )
-    interest_type = fields.Selection([('flat','Flat'), ('efektif','Efektif'), ('anuitas','Anuitas'),], 'Interest Type', default='flat', required=True)
+    name                = fields.Char(string="Name", required=True, )
+    maximum_amount      = fields.Integer(string="Maximum Amount", required=True, )
+    payment_option      = fields.Selection(string="Payment Option", selection=[('month', 'Monthly'), ('year', 'Yearly'), ], required=True, )
+    interest_type       = fields.Selection([('flat','Flat'), ('efektif','Efektif'), ('anuitas','Anuitas'),], 'Interest Type', default='flat', required=True)
     interest_percentage = fields.Float('Interest Percentage', default=0.0, required=True)
-    iface_agunan = fields.Boolean('Agunan', default=False)
-    agunan_amount = fields.Float(string="Agunan Min Amount", default=0.0)
+    iface_agunan        = fields.Boolean('Agunan', default=False)
+    agunan_amount       = fields.Float(string="Agunan Min Amount", default=0.0)
 
 # LOAN TRANSACTION
 class LoanTrans(models.Model):
@@ -109,15 +109,16 @@ class LoanTrans(models.Model):
         # elif self.loan_type_id.interest_type is "tetap":
         #     funcTetap()
 
-    trans_number = fields.Char(string="Transaction Number", readonly=True)
-    member_id = fields.Many2one('res.partner','Member', domain=[('active_members','=', True)],required=True)
-    date = fields.Datetime(string="Date", required=True, readonly="True", default=fields.Datetime.now)
-    loan_type_id = fields.Many2one(comodel_name="loan.type", string="Loan Type", required=True, )
+    trans_number        = fields.Char(string="Transaction Number", readonly=True)
+    member_id           = fields.Many2one('res.partner','Member', domain=[('active_members','=', True)],required=True)
+    date                = fields.Datetime(string="Date", required=True, readonly="True", default=fields.Datetime.now)
+    loan_type_id        = fields.Many2one(comodel_name="loan.type", string="Loan Type", required=True, )
+    savings_number_id   = fields.Many2one("savings.account", "Savings Account", required=True)
     estimate_start_date = fields.Date(string="Estimate Start Date", required=True, )
-    installment_number = fields.Integer('Installment #', default=3, required=True)
-    amount = fields.Float(string="Amount",  required=True, )
-    state = fields.Selection(string="Status", selection=STATES, required=True, default='draft' )
-    loan_trans_line = fields.One2many(comodel_name="loan.trans.line", inverse_name="loan_trans_id", string="Loan Trans Line", )
+    installment_number  = fields.Integer('Installment #', default=3, required=True)
+    amount              = fields.Float(string="Amount",  required=True, )
+    state               = fields.Selection(string="Status", selection=STATES, required=True, default='draft' )
+    loan_trans_line     = fields.One2many(comodel_name="loan.trans.line", inverse_name="loan_trans_id", string="Loan Trans Line", )
 
     @api.model
     def create(self, vals):
@@ -148,19 +149,19 @@ class LoanTransLine(models.Model):
             if line.loan_trans_id.state == 'done':
                 line.state = 'done'
 
-    loan_trans_id  = fields.Many2one("loan.trans", "Loan Trans Line Header", ondelete="cascade")
-    sequence = fields.Integer('Sequence', readonly=True)
-    name = fields.Char(string="Name", required=True, )
-    due_date = fields.Date(string="Due Date", required=True, )
-    installment_amount = fields.Float(string="Installment Amount",  required=True, default=0.0)
-    interest_amount = fields.Float('Interest Amount', required=True, default=0.0)
-    installment_total = fields.Float('Total Amount', required=True, default=0.0)
-    iface_request_review = fields.Boolean('Review', default=False, readonly=True)
-    date_request_review = fields.Datetime('Review Date', readony=True)
-    iface_request_approval = fields.Boolean('Approval', default=False, readonly=True)
-    date_request_approval = fields.Datetime('Approval Date', readony=True)
-    billing_id = fields.Many2one(comodel_name="billing.periode.line", string="Billing ID", )
-    loan_invoice_ids = fields.One2many('account.invoice','loan_trans_line_id', 'Invoices', readonly=True)
-    billing_id = fields.Many2one(comodel_name="billing.periode.line", string="Billing Id", required=False, )
-    state = fields.Selection(STATES, "Status", compute='get_state', required=True)
+    loan_trans_id           = fields.Many2one("loan.trans", "Loan Trans Line Header", ondelete="cascade")
+    sequence                = fields.Integer('Sequence', readonly=True)
+    name                    = fields.Char(string="Name", required=True, )
+    due_date                = fields.Date(string="Due Date", required=True, )
+    installment_amount      = fields.Float(string="Installment Amount",  required=True, default=0.0)
+    interest_amount         = fields.Float('Interest Amount', required=True, default=0.0)
+    installment_total       = fields.Float('Total Amount', required=True, default=0.0)
+    iface_request_review    = fields.Boolean('Review', default=False, readonly=True)
+    date_request_review     = fields.Datetime('Review Date', readony=True)
+    iface_request_approval  = fields.Boolean('Approval', default=False, readonly=True)
+    date_request_approval   = fields.Datetime('Approval Date', readony=True)
+    billing_id              = fields.Many2one(comodel_name="billing.periode.line", string="Billing ID", )
+    loan_invoice_ids        = fields.One2many('account.invoice','loan_trans_line_id', 'Invoices', readonly=True)
+    billing_id              = fields.Many2one(comodel_name="billing.periode.line", string="Billing Id", required=False, )
+    state                   = fields.Selection(STATES, "Status", compute='get_state', required=True)
 

@@ -22,31 +22,32 @@ class BillingPeriode(models.Model):
             vals.update({'end_date': lastday})
             res = billing_periode_line_obj.create(vals)
 
-    @api.one
-    def generate_billing_savings(self):
 
-        args = [('state', '=', 'active')]
-        res = self.env['savings.account'].search(args)
-
-        for data_detail in res:
-            # Generate Transaksi Simpanan Wajib
-            savings_trans_obj = self.env['savings.trans']
-
-            mandatory_savings = self.env.user.company_id.mandatory_savings_trans_type_id
-            if not mandatory_savings:
-                raise ValidationError("Mandatory Savings not defined, please define on company information!")
-
-            vals = {}
-            vals.update({'account_number_id': data_detail.savings_account.id})
-            vals.update({'debit': self.env.user.company_id.mandatory_savings})
-            vals.update({'saving_method': 'deposit'})
-            vals.update({'credit': 0.0})
-            vals.update({'trans_type_id': mandatory_savings.id})
-            vals.update({'state': 'openbilling'})
-            saving_trans = savings_trans_obj.create(vals)
-
-            if not saving_trans:
-                raise ValidationError("Error Creating Simpanan Wajib")
+    # @api.one
+    # def generate_billing_savings(self):
+    #
+    #     args = [('state', '=', 'active')]
+    #     res = self.env['savings.account'].search(args)
+    #
+    #     for data_detail in res:
+    #         # Generate Transaksi Simpanan Wajib
+    #         savings_trans_obj = self.env['savings.trans']
+    #
+    #         mandatory_savings = self.env.user.company_id.mandatory_savings_trans_type_id
+    #         if not mandatory_savings:
+    #             raise ValidationError("Mandatory Savings not defined, please define on company information!")
+    #
+    #         vals = {}
+    #         vals.update({'account_number_id': data_detail.savings_account.id})
+    #         vals.update({'debit': self.env.user.company_id.mandatory_savings})
+    #         vals.update({'saving_method': 'deposit'})
+    #         vals.update({'credit': 0.0})
+    #         vals.update({'trans_type_id': mandatory_savings.id})
+    #         vals.update({'state': 'openbilling'})
+    #         saving_trans = savings_trans_obj.create(vals)
+    #
+    #         if not saving_trans:
+    #             raise ValidationError("Error Creating Simpanan Wajib")
 
     name = fields.Integer('Year', required=True)
     line_ids = fields.One2many('billing.periode.line','billing_id','Details', readonly=True)
@@ -60,12 +61,11 @@ class BillingPeriode(models.Model):
 
 class BillingPeriodeLine(models.Model):
     _name = 'billing.periode.line'
-    _rec_name = 'billing_id'
 
     name = fields.Integer('Month', required=True, readonly=True)
     billing_id = fields.Many2one('billing.periode','Periode #', readonly=True)
     start_date = fields.Date('Start Date', required=True, readonly=True)
     end_date = fields.Date('End Date', required=True, readonly=True)
-    loan_trans_id = fields.One2many('loan.trans.line', 'billing_id', 'Loan Trans ID', readonly=True)
-    loan_trans_line_id = fields.One2many(comodel_name="loan.trans.line", inverse_name="billing_id", string="Loan Trans", required=False, )
+    loan_trans_line_id = fields.One2many(comodel_name="loan.trans.line", inverse_name="billing_id", string="Billing Loan", required=False, )
+    savings_trans_line_id = fields.One2many(comodel_name="savings.trans", inverse_name="billing_id", string="Billing Savings", required=False, )
     state = fields.Selection([('open','Open'),('done','Close')], 'Status', default='open', readonly=True)

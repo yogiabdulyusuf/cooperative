@@ -2,7 +2,6 @@
 	<!-- This Root Menu -->
 	<menuitem id="cooperative_menu_root" name="Cooperative"/>
 
-
 	<!-- This Menu Group Membership -->
 	<menuitem id="membership_menu_group" parent="cooperative_menu_root" name="Membership" sequence="3"/>
 		<menuitem	id="menu_membership"	name="Membership" parent="membership_menu_group"	action="act_membership" />

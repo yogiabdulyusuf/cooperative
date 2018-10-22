@@ -71,7 +71,8 @@ class SavingsAccount(models.Model):
     balance            = fields.Float(string="Balance", compute='calculate_total_balance', readonly=True)
     debit              = fields.Float(string="SPK/SW", compute='calculate_total_debit', readonly=True)
     credit             = fields.Float(string="Credit", compute='calculate_total_credit', readonly=True)
-    savings_list_id    = fields.One2many(comodel_name="savings.trans", inverse_name="account_number_id", string="Transactions")
+    savings_list_id    = fields.One2many(comodel_name="savings.trans", inverse_name="account_number_id", string="Savings List")
+    loan_list_id    = fields.One2many(comodel_name="loan.trans", inverse_name="savings_number_id", string="Loan List")
     state              = fields.Selection(string="", selection=[('active', 'Active'), ('notactive', 'Not Active'), ], compute='check_active_member', required=False, )
 
     @api.model
@@ -147,14 +148,14 @@ class SavingsTransaction(models.Model):
 
     saving_trans_id     = fields.Char(string="Transaction Number", readonly=True )
     date                = fields.Date(string="Create Date", required=True, readonly=True, default=fields.Date.today())
-    date_billing        = fields.Date(string="Date Billing", required=False, readonly=True)
     date_paid           = fields.Date(string="Date Paid", required=False, readonly=True)
-    date_month          = fields.Integer(string="Date Month", required=False, default=datetime.now().strftime('%m'))
+    date_month          = fields.Integer(string="Billing Month", required=False, readonly=True, default=datetime.now().strftime('%m'))
     date_year           = fields.Integer(string="Date Year", required=False, default=datetime.now().strftime('%Y'))
     trans_type_id       = fields.Many2one(comodel_name="transaction.type", string="Transaction Type", required=True )
     account_number_id   = fields.Many2one("savings.account", "Savings Account", required=True)
     journal_shu_id      = fields.Many2one("journal.shu", "Journal SHU", )
     endofday_id         = fields.Many2one("endof.day", "End Of Day ID",)
+    billing_id          = fields.Many2one(comodel_name="billing.periode.line", string="Billing ID", )
     saving_method       = fields.Selection(string="Saving Method", selection=[('deposit', 'Deposit'), ('withdrawal', 'Withdrawal'), ], readonly=True )
     balance_ssk         = fields.Float(string="Balance SSK", compute="calculate_ssk", readonly=True, )
     debit               = fields.Float(string="Debit",  default=0.0)
