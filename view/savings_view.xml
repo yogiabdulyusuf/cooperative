@@ -223,32 +223,17 @@
                                 <field name="credit" />
                             </group>
                         </group>
-                        <notebook>
-                            <page string="Savings">
-                                <field name="savings_list_id">
-                                    <tree string="Savings List" create="true" edit="false" delete="false">
-                                        <field name="date"/>
-                                        <field name="trans_type_id"/>
-                                        <field name="debit"/>
-                                        <field name="credit"/>
-                                        <field name="state"/>
-                                    </tree>
-                                </field>
-                            </page>
 
-                            <page string="Loan">
-                                <field name="loan_list_id">
-                                    <tree string="loan_trans_tree" create="true" edit="false" delete="false">
-                                        <field name="trans_number"/>
-                                        <field name="date"/>
-                                        <field name="loan_type_id"/>
-                                        <field name="estimate_start_date"/>
-                                        <field name="amount"/>
-                                        <field name="state"/>
-                                    </tree>
-                               </field>
-                            </page>
-                        </notebook>
+                        <field name="savings_list_id">
+                            <tree string="Savings List" create="true" edit="false" delete="false">
+                                <field name="date"/>
+                                <field name="trans_type_id"/>
+                                <field name="debit"/>
+                                <field name="credit"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+
                     </sheet>
                 </form>
             </field>

@@ -21,12 +21,13 @@
 	<menuitem id="back_office_group" parent="cooperative_menu_root" name="Back Office" sequence="20"/>
 		<menuitem id="back_office_savings_group" parent="back_office_group" name="Savings" />
 			<menuitem	id="savings_transaction"	name="Transaction" parent="back_office_savings_group"	action="act_saving_trans" sequence="1"/>
+			<menuitem	id="savings_account"	name="Account" parent="back_office_savings_group"	action="act_saving_account" />
 			<!-- <menuitem	id="corection"	name="Corection" parent="back_office_savings_group"	action="act_corection_tree" sequence="4"/> -->
 
 		<menuitem id="back_office_loan_group" parent="back_office_group" name="Loan"/>
 			<menuitem	id="type_loan_trans"	name="Transaction" parent="back_office_loan_group"	action="act_loan_trans" />
 
-		<menuitem	id="savings_account"	name="Account" parent="back_office_group"	action="act_saving_account" />
+
 		<menuitem	id="end_of_day"	name="End Of Day" parent="back_office_group"	action="act_endofday" />
 
 	<!-- This Menu Group Deposit -->

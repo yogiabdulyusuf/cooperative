@@ -21,6 +21,33 @@
                     </page>
                 </xpath>
 
+                <xpath expr="//notebook" position="inside">
+                    <page string="Savings">
+                        <field name="savings_account_id">
+                            <tree string="savings_account_tree" create="true" edit="false" delete="false">
+                                <field name="account_number"/>
+                                <field name="name"/>
+                                <field name="interest"/>
+                            </tree>
+                       </field>
+                    </page>
+                </xpath>
+
+                <xpath expr="//notebook" position="inside">
+                    <page string="Loan">
+                        <field name="loan_list_id">
+                            <tree string="loan_trans_tree" create="true" edit="false" delete="false">
+                                <field name="trans_number"/>
+                                <field name="date"/>
+                                <field name="loan_type_id"/>
+                                <field name="estimate_start_date"/>
+                                <field name="amount"/>
+                                <field name="state"/>
+                            </tree>
+                       </field>
+                    </page>
+                </xpath>
+
                 <!-- Hide Field Res Partner -->
                 <xpath expr="//field[@name='lang']" position="attributes">
                     <attribute name="invisible">1</attribute>

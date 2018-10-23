@@ -59,6 +59,7 @@ class Membership(models.Model):
 
     active_members       = fields.Boolean(string="Active Member", )
     savings_account_id   = fields.One2many(comodel_name="savings.account", inverse_name="name",  )
+    loan_list_id         = fields.One2many(comodel_name="loan.trans", inverse_name="member_id", string="Loan List")
     states               = fields.Selection(string="State", selection=STATES, required=True, default='draft', )
 
 class Termination(models.Model):
